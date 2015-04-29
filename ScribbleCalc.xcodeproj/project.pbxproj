@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D94A633F1AF16711004DBF65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A633E1AF16711004DBF65 /* AppDelegate.swift */; };
+		D94A63411AF16711004DBF65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A63401AF16711004DBF65 /* ViewController.swift */; };
+		D94A63441AF16711004DBF65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94A63421AF16711004DBF65 /* Main.storyboard */; };
+		D94A63461AF16711004DBF65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D94A63451AF16711004DBF65 /* Images.xcassets */; };
+		D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94A63471AF16711004DBF65 /* LaunchScreen.xib */; };
+		D94A63551AF16711004DBF65 /* ScribbleCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D94A634F1AF16711004DBF65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D94A63311AF16711004DBF65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D94A63381AF16711004DBF65;
+			remoteInfo = ScribbleCalc;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D94A63391AF16711004DBF65 /* ScribbleCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScribbleCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D94A633D1AF16711004DBF65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D94A633E1AF16711004DBF65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D94A63401AF16711004DBF65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D94A63431AF16711004DBF65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D94A63451AF16711004DBF65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D94A63481AF16711004DBF65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D94A634E1AF16711004DBF65 /* ScribbleCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScribbleCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D94A63531AF16711004DBF65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribbleCalcTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D94A63361AF16711004DBF65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D94A634B1AF16711004DBF65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D94A63301AF16711004DBF65 = {
+			isa = PBXGroup;
+			children = (
+				D94A633B1AF16711004DBF65 /* ScribbleCalc */,
+				D94A63511AF16711004DBF65 /* ScribbleCalcTests */,
+				D94A633A1AF16711004DBF65 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D94A633A1AF16711004DBF65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D94A63391AF16711004DBF65 /* ScribbleCalc.app */,
+				D94A634E1AF16711004DBF65 /* ScribbleCalcTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D94A633B1AF16711004DBF65 /* ScribbleCalc */ = {
+			isa = PBXGroup;
+			children = (
+				D94A633E1AF16711004DBF65 /* AppDelegate.swift */,
+				D94A63401AF16711004DBF65 /* ViewController.swift */,
+				D94A63421AF16711004DBF65 /* Main.storyboard */,
+				D94A63451AF16711004DBF65 /* Images.xcassets */,
+				D94A63471AF16711004DBF65 /* LaunchScreen.xib */,
+				D94A633C1AF16711004DBF65 /* Supporting Files */,
+			);
+			path = ScribbleCalc;
+			sourceTree = "<group>";
+		};
+		D94A633C1AF16711004DBF65 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D94A633D1AF16711004DBF65 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D94A63511AF16711004DBF65 /* ScribbleCalcTests */ = {
+			isa = PBXGroup;
+			children = (
+				D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */,
+				D94A63521AF16711004DBF65 /* Supporting Files */,
+			);
+			path = ScribbleCalcTests;
+			sourceTree = "<group>";
+		};
+		D94A63521AF16711004DBF65 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D94A63531AF16711004DBF65 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D94A63381AF16711004DBF65 /* ScribbleCalc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D94A63581AF16711004DBF65 /* Build configuration list for PBXNativeTarget "ScribbleCalc" */;
+			buildPhases = (
+				D94A63351AF16711004DBF65 /* Sources */,
+				D94A63361AF16711004DBF65 /* Frameworks */,
+				D94A63371AF16711004DBF65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScribbleCalc;
+			productName = ScribbleCalc;
+			productReference = D94A63391AF16711004DBF65 /* ScribbleCalc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D94A634D1AF16711004DBF65 /* ScribbleCalcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D94A635B1AF16711004DBF65 /* Build configuration list for PBXNativeTarget "ScribbleCalcTests" */;
+			buildPhases = (
+				D94A634A1AF16711004DBF65 /* Sources */,
+				D94A634B1AF16711004DBF65 /* Frameworks */,
+				D94A634C1AF16711004DBF65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D94A63501AF16711004DBF65 /* PBXTargetDependency */,
+			);
+			name = ScribbleCalcTests;
+			productName = ScribbleCalcTests;
+			productReference = D94A634E1AF16711004DBF65 /* ScribbleCalcTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D94A63311AF16711004DBF65 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Austin Tooley";
+				TargetAttributes = {
+					D94A63381AF16711004DBF65 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					D94A634D1AF16711004DBF65 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = D94A63381AF16711004DBF65;
+					};
+				};
+			};
+			buildConfigurationList = D94A63341AF16711004DBF65 /* Build configuration list for PBXProject "ScribbleCalc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D94A63301AF16711004DBF65;
+			productRefGroup = D94A633A1AF16711004DBF65 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D94A63381AF16711004DBF65 /* ScribbleCalc */,
+				D94A634D1AF16711004DBF65 /* ScribbleCalcTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D94A63371AF16711004DBF65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94A63441AF16711004DBF65 /* Main.storyboard in Resources */,
+				D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */,
+				D94A63461AF16711004DBF65 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D94A634C1AF16711004DBF65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D94A63351AF16711004DBF65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94A63411AF16711004DBF65 /* ViewController.swift in Sources */,
+				D94A633F1AF16711004DBF65 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D94A634A1AF16711004DBF65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94A63551AF16711004DBF65 /* ScribbleCalcTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D94A63501AF16711004DBF65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D94A63381AF16711004DBF65 /* ScribbleCalc */;
+			targetProxy = D94A634F1AF16711004DBF65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D94A63421AF16711004DBF65 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D94A63431AF16711004DBF65 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D94A63471AF16711004DBF65 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D94A63481AF16711004DBF65 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D94A63561AF16711004DBF65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D94A63571AF16711004DBF65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D94A63591AF16711004DBF65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ScribbleCalc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D94A635A1AF16711004DBF65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ScribbleCalc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D94A635C1AF16711004DBF65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScribbleCalcTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScribbleCalc.app/ScribbleCalc";
+			};
+			name = Debug;
+		};
+		D94A635D1AF16711004DBF65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScribbleCalcTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScribbleCalc.app/ScribbleCalc";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D94A63341AF16711004DBF65 /* Build configuration list for PBXProject "ScribbleCalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D94A63561AF16711004DBF65 /* Debug */,
+				D94A63571AF16711004DBF65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D94A63581AF16711004DBF65 /* Build configuration list for PBXNativeTarget "ScribbleCalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D94A63591AF16711004DBF65 /* Debug */,
+				D94A635A1AF16711004DBF65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D94A635B1AF16711004DBF65 /* Build configuration list for PBXNativeTarget "ScribbleCalcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D94A635C1AF16711004DBF65 /* Debug */,
+				D94A635D1AF16711004DBF65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D94A63311AF16711004DBF65 /* Project object */;
+}
