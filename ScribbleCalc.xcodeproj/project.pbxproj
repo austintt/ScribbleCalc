@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */ = {isa = PBXBuildFile; fileRef = D91C9E0E1B0E36D600752433 /* trainingsample.csv */; };
+		D91C9E111B0E378A00752433 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C9E101B0E378A00752433 /* CSV.swift */; };
 		D94A633F1AF16711004DBF65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A633E1AF16711004DBF65 /* AppDelegate.swift */; };
 		D94A63411AF16711004DBF65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A63401AF16711004DBF65 /* ViewController.swift */; };
 		D94A63441AF16711004DBF65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94A63421AF16711004DBF65 /* Main.storyboard */; };
 		D94A63461AF16711004DBF65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D94A63451AF16711004DBF65 /* Images.xcassets */; };
 		D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94A63471AF16711004DBF65 /* LaunchScreen.xib */; };
 		D94A63551AF16711004DBF65 /* ScribbleCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */; };
+		D9D235041B1501AA00FD521D /* PhotoManipulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D235031B1501AA00FD521D /* PhotoManipulator.swift */; };
+		D9D235061B15363A00FD521D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D235051B15363A00FD521D /* Extensions.swift */; };
+		D9D2350B1B16650900FD521D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D2350A1B16650900FD521D /* CoreImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D91C9E0E1B0E36D600752433 /* trainingsample.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trainingsample.csv; sourceTree = "<group>"; };
+		D91C9E101B0E378A00752433 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 		D94A63391AF16711004DBF65 /* ScribbleCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScribbleCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94A633D1AF16711004DBF65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94A633E1AF16711004DBF65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +43,9 @@
 		D94A634E1AF16711004DBF65 /* ScribbleCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScribbleCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94A63531AF16711004DBF65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribbleCalcTests.swift; sourceTree = "<group>"; };
+		D9D235031B1501AA00FD521D /* PhotoManipulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManipulator.swift; sourceTree = "<group>"; };
+		D9D235051B15363A00FD521D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D9D2350A1B16650900FD521D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D2350B1B16650900FD521D /* CoreImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +70,7 @@
 		D94A63301AF16711004DBF65 = {
 			isa = PBXGroup;
 			children = (
+				D9D2350A1B16650900FD521D /* CoreImage.framework */,
 				D94A633B1AF16711004DBF65 /* ScribbleCalc */,
 				D94A63511AF16711004DBF65 /* ScribbleCalcTests */,
 				D94A633A1AF16711004DBF65 /* Products */,
@@ -79,6 +91,9 @@
 			children = (
 				D94A633E1AF16711004DBF65 /* AppDelegate.swift */,
 				D94A63401AF16711004DBF65 /* ViewController.swift */,
+				D9D235051B15363A00FD521D /* Extensions.swift */,
+				D9D235031B1501AA00FD521D /* PhotoManipulator.swift */,
+				D91C9E101B0E378A00752433 /* CSV.swift */,
 				D94A63421AF16711004DBF65 /* Main.storyboard */,
 				D94A63451AF16711004DBF65 /* Images.xcassets */,
 				D94A63471AF16711004DBF65 /* LaunchScreen.xib */,
@@ -90,6 +105,7 @@
 		D94A633C1AF16711004DBF65 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D91C9E0E1B0E36D600752433 /* trainingsample.csv */,
 				D94A633D1AF16711004DBF65 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -194,6 +210,7 @@
 			files = (
 				D94A63441AF16711004DBF65 /* Main.storyboard in Resources */,
 				D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */,
+				D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */,
 				D94A63461AF16711004DBF65 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,8 +229,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D235061B15363A00FD521D /* Extensions.swift in Sources */,
 				D94A63411AF16711004DBF65 /* ViewController.swift in Sources */,
 				D94A633F1AF16711004DBF65 /* AppDelegate.swift in Sources */,
+				D91C9E111B0E378A00752433 /* CSV.swift in Sources */,
+				D9D235041B1501AA00FD521D /* PhotoManipulator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,9 +360,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ScribbleCalc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,6 +372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ScribbleCalc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,6 +432,7 @@
 				D94A635A1AF16711004DBF65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D94A635B1AF16711004DBF65 /* Build configuration list for PBXNativeTarget "ScribbleCalcTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +441,7 @@
 				D94A635D1AF16711004DBF65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
