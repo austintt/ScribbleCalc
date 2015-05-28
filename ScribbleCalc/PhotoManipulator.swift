@@ -8,11 +8,16 @@
 
 import UIKit
 import CoreImage
+import GPUImage
 
 class PhotoManipulator: NSObject {
     
     var filter: CIFilter
     
+    /****************************************************************
+    * CONSTRUCTOR
+    *
+    *****************************************************************/
     override init() {
         filter = CIFilter(name: "CIPhotoEffectNoir")
     }
@@ -65,7 +70,7 @@ class PhotoManipulator: NSObject {
         // Create a new image based on the imageRef and rotate back to the original orientation
         let image: UIImage = UIImage(CGImage: imageRef, scale: originalImage.scale, orientation: originalImage.imageOrientation)!
         
-        return image//convertToGrayscale(image: image)
+        return image
     }
     
     /****************************************************************
