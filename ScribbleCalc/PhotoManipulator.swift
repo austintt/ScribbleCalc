@@ -103,9 +103,11 @@ class PhotoManipulator: NSObject {
     func thresholdPhoto (originalImage: UIImage) -> UIImage {
         let inputImage: UIImage = originalImage
         var thresholdFilter: GPUImageLuminanceThresholdFilter = GPUImageLuminanceThresholdFilter()
+        var invertFilter = GPUImageColorInvertFilter()
         let filteredImage: UIImage = thresholdFilter.imageByFilteringImage(inputImage)
+        let finalImage = invertFilter.imageByFilteringImage(filteredImage)
     
-        return filteredImage
+        return finalImage
     }
     
     /****************************************************************
