@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */ = {isa = PBXBuildFile; fileRef = D91C9E0E1B0E36D600752433 /* trainingsample.csv */; };
 		D91C9E111B0E378A00752433 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C9E101B0E378A00752433 /* CSV.swift */; };
+		D9274C801B1A6A2E00039DC0 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9274C7F1B1A6A2E00039DC0 /* test.jpg */; };
 		D94A633F1AF16711004DBF65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A633E1AF16711004DBF65 /* AppDelegate.swift */; };
 		D94A63411AF16711004DBF65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A63401AF16711004DBF65 /* ViewController.swift */; };
 		D94A63441AF16711004DBF65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94A63421AF16711004DBF65 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		D91C9E0E1B0E36D600752433 /* trainingsample.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trainingsample.csv; sourceTree = "<group>"; };
 		D91C9E101B0E378A00752433 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		D9274C7F1B1A6A2E00039DC0 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = test.jpg; path = ../../../../../Desktop/test.jpg; sourceTree = "<group>"; };
 		D94A63391AF16711004DBF65 /* ScribbleCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScribbleCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94A633D1AF16711004DBF65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94A633E1AF16711004DBF65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		D94A633C1AF16711004DBF65 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9274C7F1B1A6A2E00039DC0 /* test.jpg */,
 				D91C9E0E1B0E36D600752433 /* trainingsample.csv */,
 				D94A633D1AF16711004DBF65 /* Info.plist */,
 			);
@@ -282,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D94A63441AF16711004DBF65 /* Main.storyboard in Resources */,
+				D9274C801B1A6A2E00039DC0 /* test.jpg in Resources */,
 				D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */,
 				D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */,
 				D94A63461AF16711004DBF65 /* Images.xcassets in Resources */,

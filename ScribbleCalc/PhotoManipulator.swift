@@ -27,11 +27,13 @@ class PhotoManipulator: NSObject {
     *
     *****************************************************************/
     func processPhoto(image: UIImage) -> UIImage {
-        var newImage = cropToSquare(image)
-        newImage = convertToGrayscale(newImage)
-        newImage = invertPhoto(newImage)
+//        newImage = convertToGrayscale(newImage)
+//        let newerImage = invertPhoto(image)
+        let newImage = thresholdPhoto(image)
         
-        return newImage
+//        let newestImage = cropToSquare(image)
+        
+        return thresholdPhoto(image)
     }
     
     /****************************************************************
@@ -95,12 +97,24 @@ class PhotoManipulator: NSObject {
     }
     
     /****************************************************************
+    * THRESHOLD PHOTO
+    *
+    *****************************************************************/
+    func thresholdPhoto (originalImage: UIImage) -> UIImage {
+        let inputImage: UIImage = originalImage
+        var thresholdFilter: GPUImageLuminanceThresholdFilter = GPUImageLuminanceThresholdFilter()
+        let filteredImage: UIImage = thresholdFilter.imageByFilteringImage(inputImage)
+    
+        return filteredImage
+    }
+    
+    /****************************************************************
     * INVERT PHOTO
     *
     *****************************************************************/
     func invertPhoto (originalImage: UIImage) -> UIImage {
         //convert to CIImage
-        let beginImage = originalImage.CIImage //worst bug ever
+        let beginImage = CIImage(image: originalImage)//originalImage.CIImage //worst bug ever
         
         //Apply Invert filter
         filter = CIFilter(name: "CIColorInvert")
