@@ -56,7 +56,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         
-        //Process Image
+        // Process Image
         self.testDataLabel.text = "Processing image..."
         let manipulator = PhotoManipulator()
         imageView.image = manipulator.cropToSquare((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
@@ -64,20 +64,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imageView.image = manipulator.thresholdPhoto(imageView.image!)
         imageView.image = manipulator.invertPhoto(imageView.image!)
         
-        //convert
+        // Convert
         self.testDataLabel.text = "Image processed! Getting pixel data..."
         let testPixelData = manipulator.altImageDump(imageView.image!)
         self.testDataLabel.text = "Got \(testPixelData.count) pixels from test image!"
         
-        // DEBUG - get multi array
-        manipulator.get2dArrayFromPixelDump(testPixelData)
+        // Get multi array
+        let pixels2DArray: [[Int]] = manipulator.get2dArrayFromPixelDump(testPixelData)
         
+        // Find characters
+        var characters = manipulator.segmentCharacters(pixels2DArray)
         
-        //find characters
+        // Can we load training data yet?
         
-        //can we load training data yet?
-        
-        //knn
+        // Knn
     }
     
     /*************************************************************

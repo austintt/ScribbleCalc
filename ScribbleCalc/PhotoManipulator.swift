@@ -12,8 +12,8 @@ import GPUImage
 
 class PhotoManipulator: NSObject {
     
-    let outputWidth  = 24
-    let outputHeight = 24
+    let outputWidth  = 300
+    let outputHeight = 300
     
     
     /****************************************************************
@@ -214,7 +214,7 @@ class PhotoManipulator: NSObject {
     /*****************************************************************
     * GET 2D ARRAY FROM PIXEL DUMP
     *****************************************************************/
-    func get2dArrayFromPixelDump(inPixels: Array<Int>) {
+    func get2dArrayFromPixelDump(inPixels: Array<Int>) -> [[Int]]{
         var pixels: [[Int]] = Array(count: outputHeight, repeatedValue: Array(count: outputWidth, repeatedValue: 0))
         var inPixelCount = 0
         
@@ -228,10 +228,60 @@ class PhotoManipulator: NSObject {
         }
     
         println("Converted pixels into 2d array!")
-        for (var k = 0; k < outputHeight; k++) {
-            println(pixels[k])
-        }
-        
+//        for (var k = 0; k < outputHeight; k++) {
+//            println(pixels[k])
+//        }
+        return pixels
     }
+    
+    /*****************************************************************
+    * SEGMENT CHARACTERS
+    *****************************************************************/
+    func segmentCharacters(Pixels: [[Int]]) -> Array<ImgCharacter>{
+        println("Segmenting")
+        var characters = [ImgCharacter]()
+        var startedChar = false
+        var endedChar = false
+        var columnAverage = 0
+        var columnCount = 0
+        var newCharacter = ImgCharacter()
+        
+        println("Col average:")
+        // Find character by vertical average
+        for (var row = 0; row < outputWidth; row++) {
+            // Compute average
+            for (var col = 0; col < outputHeight; col++) {
+                columnAverage += Pixels[col][row]
+            }
+            columnAverage = columnAverage / outputHeight
+        
+            // If character is starting
+            if (columnAverage > 0 && !startedChar) {
+                println("Starting character at column: \(columnCount)")
+                startedChar = true
+                newCharacter.startCol = columnCount
+            }
+            
+            // If character is ending
+            else if (startedChar && columnAverage == 0) {
+                println("Ending character at column: \(columnCount)")
+                startedChar = false
+                newCharacter.endCol = columnCount
+                characters.append(newCharacter)
+                newCharacter.reset()
+            }
+            columnAverage = 0
+            columnCount++
+        }
+    
+        
+        
+        return characters
+    }
+    
+    
+    
+    
+    
     
 }
