@@ -16,7 +16,9 @@ var hasLoadedTrainingData = false
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var trainingDataLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var testDataLabel: UILabel!
     var imagePicker: UIImagePickerController!
     var newMedia: Bool?
     var trainingPixelData: [[String]] = []
@@ -24,7 +26,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //load up training pixel data
+        trainingDataLabel.text = "Attempting to load training data..."
+        if !hasLoadedTrainingData {
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                // do some task
+                hasLoadedTrainingData = true
+                self.trainingPixelData = getContentsOfCSV(trainingSource)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.trainingDataLabel.text = "Loaded pixel data from \(self.trainingPixelData.count - 1) training images"
+                }
+            }
+        }
     }
     
     
@@ -43,33 +57,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         
         //Process Image
+        self.testDataLabel.text = "Processing image..."
         let manipulator = PhotoManipulator()
-        
-        //crop
-        imageView.image = manipulator.processPhoto((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
-        
-//        //grayscale
-//        imageView.image = manipulator.convertToGrayscale(imageView.image!)
-//        
-//        //invert
-//        imageView.image = manipulator.invertPhoto(imageView.image!)
-//        
-
-        
-        //load up training pixel data
-//                if !hasLoadedTrainingData {
-//                    let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-//                    dispatch_async(dispatch_get_global_queue(priority, 0)) {
-//                        // do some task
-//                        hasLoadedTrainingData = true
-//                        self.trainingPixelData = getContentsOfCSV(trainingSource)
-//                        dispatch_async(dispatch_get_main_queue()) {
-//                            // update some UI
-//                        }
-//                    }
-//                }
+        imageView.image = manipulator.cropToSquare((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
+        imageView.image = manipulator.downsample(imageView.image!)
+        imageView.image = manipulator.thresholdPhoto(imageView.image!)
+        imageView.image = manipulator.invertPhoto(imageView.image!)
         
         //convert
+        self.testDataLabel.text = "Image processed! Getting pixel data..."
+        let testPixelData = manipulator.altImageDump(imageView.image!)
+        self.testDataLabel.text = "Got \(testPixelData.count) pixels from test image!"
+        
+        // DEBUG - get multi array
+        manipulator.get2dArrayFromPixelDump(testPixelData)
         
         
         //find characters

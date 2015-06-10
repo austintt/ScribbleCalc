@@ -12,29 +12,9 @@ import GPUImage
 
 class PhotoManipulator: NSObject {
     
-    var filter: CIFilter
+    let outputWidth  = 24
+    let outputHeight = 24
     
-    /****************************************************************
-    * CONSTRUCTOR
-    *
-    *****************************************************************/
-    override init() {
-        filter = CIFilter(name: "CIPhotoEffectNoir")
-    }
-    
-    /****************************************************************
-    * PROCESS PHOTO
-    *
-    *****************************************************************/
-    func processPhoto(image: UIImage) -> UIImage {
-//        newImage = convertToGrayscale(newImage)
-//        let newerImage = invertPhoto(image)
-        let newImage = thresholdPhoto(image)
-        
-//        let newestImage = cropToSquare(image)
-        
-        return thresholdPhoto(image)
-    }
     
     /****************************************************************
     * CROP TO SQUARE
@@ -46,7 +26,6 @@ class PhotoManipulator: NSObject {
         
         // Get the size of the contextImage
         let contextSize: CGSize = contextImage.size
-        
         let posX: CGFloat
         let posY: CGFloat
         let width: CGFloat
@@ -80,15 +59,15 @@ class PhotoManipulator: NSObject {
     *
     *****************************************************************/
     func convertToGrayscale(originalImage: UIImage) -> UIImage {
-        //convert to CIImage
+        // Convert to CIImage
         let beginImage = CIImage(image: originalImage)
         
-        //Apply MonoFilter
-        filter = CIFilter(name: "CIMaximumComponent")
+        // Apply MonoFilter
+        var filter = CIFilter(name: "CIMaximumComponent")
         filter.setDefaults()
         filter.setValue(beginImage, forKey: kCIInputImageKey)
         
-        //Convert back to UIImage
+        // Convert back to UIImage
         let newImage = UIImage(CIImage: filter.outputImage) /*,
             scale: 1.0 ,
             orientation: UIImageOrientation.Right)*/
@@ -101,29 +80,43 @@ class PhotoManipulator: NSObject {
     *
     *****************************************************************/
     func thresholdPhoto (originalImage: UIImage) -> UIImage {
-        let inputImage: UIImage = originalImage
+        println("Thresholding")
+        // Create threshold filter
         var thresholdFilter: GPUImageLuminanceThresholdFilter = GPUImageLuminanceThresholdFilter()
-        var invertFilter = GPUImageColorInvertFilter()
-        let filteredImage: UIImage = thresholdFilter.imageByFilteringImage(inputImage)
-        let finalImage = invertFilter.imageByFilteringImage(filteredImage)
+        
+        // Apply filter
+        let filteredImage: UIImage = thresholdFilter.imageByFilteringImage(originalImage)
+        
+        return filteredImage
+    }
     
+    /*****************************************************************
+    * NEW INVERT PHOTO
+    *****************************************************************/
+    func invertPhoto (originalImage: UIImage) -> UIImage {
+        println("Inverting")
+        // Create invert filter
+        var invertFilter = GPUImageColorInvertFilter()
+        
+        // Apply filter
+        let finalImage = invertFilter.imageByFilteringImage(originalImage)
         return finalImage
     }
     
     /****************************************************************
-    * INVERT PHOTO
+    * OLD INVERT PHOTO
     *
     *****************************************************************/
-    func invertPhoto (originalImage: UIImage) -> UIImage {
-        //convert to CIImage
+    func oldInvertPhoto (originalImage: UIImage) -> UIImage {
+        // Convert to CIImage
         let beginImage = CIImage(image: originalImage)//originalImage.CIImage //worst bug ever
         
-        //Apply Invert filter
-        filter = CIFilter(name: "CIColorInvert")
+        // Apply Invert filter
+        var filter = CIFilter(name: "CIColorInvert")
         filter.setDefaults()
         filter.setValue(beginImage, forKey: kCIInputImageKey)
         
-        //Convert back to UIImage
+        // Convert back to UIImage
         let newImage = UIImage(CIImage: filter.outputImage  ,
             scale: 1.0 ,
             orientation: UIImageOrientation.Right)
@@ -132,10 +125,27 @@ class PhotoManipulator: NSObject {
     }
     
     /****************************************************************
+    * DOWNSAMPLE
+    *
+    *****************************************************************/
+    func downsample(originalImage: UIImage) -> UIImage {
+        println("Downsampling")
+        
+        // Create resample filter
+        var downFilter = GPUImageLanczosResamplingFilter()
+        
+        // Apply filter
+        downFilter.forceProcessingAtSize(CGSize(width: outputWidth, height: outputHeight))
+        let downSampledImage: UIImage = downFilter.imageByFilteringImage(originalImage)
+        
+        return downSampledImage
+    }
+    
+    /****************************************************************
     * RESIZE PHOTO
     *
     *****************************************************************/
-    func resize(image: UIImage, targetSize: CGSize) -> UIImage{
+    func oldResize(image: UIImage, targetSize: CGSize) -> UIImage{
         let size = image.size
         
         let widthRatio  = targetSize.width  / image.size.width
@@ -160,4 +170,68 @@ class PhotoManipulator: NSObject {
         
         return newImage
     }
+    
+    /*****************************************************************
+    * ALTERNATE IMAGE DUMP
+    *****************************************************************/
+    func altImageDump(uiimage: UIImage) -> Array<Int>{
+        var pixels: Array<Int> = []
+        let extractor = PixelExtractor(img: uiimage.CGImage!)
+        for var x = 0; x < outputWidth; x++ {
+            for var y = 0; y < outputHeight; y++ {
+                pixels.append(extractor.color_at(x: x, y: y))
+            }
+        }
+        
+        print("Got \(pixels.count) pixels")
+        return pixels
+    }
+    
+    /****************************************************************
+    * OLD IMAGE DUMP
+    *
+    *****************************************************************/
+    func oldImageDump(image: UIImage) -> Array<Int>{
+        println("Dumping pixels")
+        let cgImage = image.CGImage
+        let width = CGImageGetWidth(cgImage)
+        let height = CGImageGetHeight(cgImage)
+        let pixelData = CGDataProviderCopyData(CGImageGetDataProvider(cgImage))
+        let data = CFDataGetBytePtr(pixelData)
+        var pixels: Array<Int> = []
+       
+        for (var i = 0; i < width; i++) {
+            for (var j = 0; j < height; j++) {
+                let currentPixel = ((width  * j) + i ) * 4
+                pixels.append(Int(data[currentPixel]))
+            }
+            
+        }
+        println(pixels.count)
+        return pixels
+        }
+    
+    /*****************************************************************
+    * GET 2D ARRAY FROM PIXEL DUMP
+    *****************************************************************/
+    func get2dArrayFromPixelDump(inPixels: Array<Int>) {
+        var pixels: [[Int]] = Array(count: outputHeight, repeatedValue: Array(count: outputWidth, repeatedValue: 0))
+        var inPixelCount = 0
+        
+        //columns (width)
+        for (var i = 0; i < outputHeight; i++) {
+            //rows (height)
+            for (var j = outputWidth - 1; j >= 0; j--) {
+                pixels[i][j] = inPixels[inPixelCount]
+                inPixelCount++
+            }
+        }
+    
+        println("Converted pixels into 2d array!")
+        for (var k = 0; k < outputHeight; k++) {
+            println(pixels[k])
+        }
+        
+    }
+    
 }
