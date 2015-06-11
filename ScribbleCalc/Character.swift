@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImgCharacter {
+struct ImgCharacter {
     var startRow: Int
     var endRow: Int
     var startCol: Int
@@ -16,14 +16,6 @@ class ImgCharacter {
     var textCharacter: String
     
     init () {
-        startRow = 0
-        startCol = 0
-        endRow   = 0
-        endCol   = 0
-        textCharacter = ""
-    }
-    
-    func reset() {
         startRow = 0
         startCol = 0
         endRow   = 0

@@ -12,8 +12,8 @@ import GPUImage
 
 class PhotoManipulator: NSObject {
     
-    let outputWidth  = 300
-    let outputHeight = 300
+    let outputWidth  = 50
+    let outputHeight = 50
     
     
     /****************************************************************
@@ -228,52 +228,123 @@ class PhotoManipulator: NSObject {
         }
     
         println("Converted pixels into 2d array!")
-//        for (var k = 0; k < outputHeight; k++) {
-//            println(pixels[k])
-//        }
+        for (var k = 0; k < outputHeight; k++) {
+            println(pixels[k])
+        }
         return pixels
     }
     
     /*****************************************************************
     * SEGMENT CHARACTERS
     *****************************************************************/
-    func segmentCharacters(Pixels: [[Int]]) -> Array<ImgCharacter>{
+    func segmentCharacters(pixels: [[Int]]) -> Array<ImgCharacter>{
         println("Segmenting")
         var characters = [ImgCharacter]()
         var startedChar = false
-        var endedChar = false
-        var columnAverage = 0
+        var prevlineAverage = 0
+        var lineAverage = 0
         var columnCount = 0
+        var rowCount = 0
         var newCharacter = ImgCharacter()
+        var currentCharacter = 0
+        
+        // TODO: Decide how big of a magrgin on each side of character. Currently none on left or top
+        // But 1 on right and bottom.
+        // TODO: Height finder needs to work within params found from width finder, otherwise, finds highest and lowest
         
         println("Col average:")
         // Find character by vertical average
         for (var row = 0; row < outputWidth; row++) {
             // Compute average
             for (var col = 0; col < outputHeight; col++) {
-                columnAverage += Pixels[col][row]
+                lineAverage += pixels[col][row]
             }
-            columnAverage = columnAverage / outputHeight
-        
+            lineAverage = lineAverage / outputHeight
+//            print("\(lineAverage) ")
             // If character is starting
-            if (columnAverage > 0 && !startedChar) {
-                println("Starting character at column: \(columnCount)")
+            if (!startedChar && lineAverage > 0 && prevlineAverage > 0) {
+//                println("Starting character at column: \(columnCount - 1)")
+                newCharacter = ImgCharacter()
                 startedChar = true
-                newCharacter.startCol = columnCount
+                newCharacter.startCol = columnCount - 1
             }
             
             // If character is ending
-            else if (startedChar && columnAverage == 0) {
-                println("Ending character at column: \(columnCount)")
+            else if (startedChar && lineAverage == 0 && prevlineAverage == 0) {
+//                println("Ending character at column: \(columnCount)")
                 startedChar = false
                 newCharacter.endCol = columnCount
                 characters.append(newCharacter)
-                newCharacter.reset()
             }
-            columnAverage = 0
+            
+            // Prep for next
+            prevlineAverage = lineAverage
+            lineAverage = 0
             columnCount++
         }
+        
+        // Reset
+        prevlineAverage = 0
+        lineAverage = 0
+        startedChar = false
+        
+//        println("Test before Rows")
+//        for char in characters {
+//            print("SC: \(char.startCol) EC: \(char.endCol)\n")
+//        }
+        
+        // Find top and bottom of each character
+        println("Row average:")
+        for (var row = 0; row < outputHeight; row++) {
+            for (var col = 0; col < outputWidth; col++) {
+                lineAverage += pixels[row][col]
+            }
+            lineAverage = lineAverage / outputWidth
+//            print("\(lineAverage) ")
+            // If character is starting
+            if (!startedChar && lineAverage > 0 && prevlineAverage > 0) {
+//                println("Starting character at row: \(rowCount - 1)")
+                startedChar = true
+                
+                //double check that we are still in bounds
+                if (currentCharacter < characters.count) {
+                    characters[currentCharacter].startRow = rowCount - 1
+                }
+                else {println("Error: out of bounds in segmenter")}
+            }
+                
+            // If character is ending
+            else if (startedChar && lineAverage == 0 && prevlineAverage == 0) {
+//                println("Ending character at row: \(rowCount)")
+                startedChar = false
+                
+                //double check that we are still in bounds
+                if (currentCharacter < characters.count) {
+                    characters[currentCharacter].endRow = rowCount
+                    currentCharacter++
+                }
+                else {println("Error: out of bounds in segmenter")}
+                
+                
+            }
+            
+            // Prep for next
+            prevlineAverage = lineAverage
+            lineAverage = 0
+            rowCount++
+        }
+        
     
+        // Verify that the distance between start and end are big enough for char
+        
+        
+    
+        
+        //DEBUG
+        for char in characters {
+            print("SC: \(char.startCol) EC: \(char.endCol)\n")
+            print("SR: \(char.startRow) ER: \(char.endRow)\n\n")
+        }
         
         
         return characters

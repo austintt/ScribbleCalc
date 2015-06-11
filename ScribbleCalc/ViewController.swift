@@ -16,6 +16,7 @@ var hasLoadedTrainingData = false
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var charactersFoundLabel: UILabel!
     @IBOutlet weak var trainingDataLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var testDataLabel: UILabel!
@@ -74,6 +75,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Find characters
         var characters = manipulator.segmentCharacters(pixels2DArray)
+        charactersFoundLabel.text = "Found \(characters.count) characters"
+        
         
         // Can we load training data yet?
         
