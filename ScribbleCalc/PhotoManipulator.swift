@@ -12,8 +12,8 @@ import GPUImage
 
 class PhotoManipulator: NSObject {
     
-    let outputWidth  = 50
-    let outputHeight = 50
+    let outputWidth  = 24
+    let outputHeight = 24
     
     
     /****************************************************************
@@ -299,11 +299,11 @@ class PhotoManipulator: NSObject {
             for (var col = 0; col < outputWidth; col++) {
                 lineAverage += pixels[row][col]
             }
+
             lineAverage = lineAverage / outputWidth
-//            print("\(lineAverage) ")
+
             // If character is starting
             if (!startedChar && lineAverage > 0 && prevlineAverage > 0) {
-//                println("Starting character at row: \(rowCount - 1)")
                 startedChar = true
                 
                 //double check that we are still in bounds
@@ -315,7 +315,6 @@ class PhotoManipulator: NSObject {
                 
             // If character is ending
             else if (startedChar && lineAverage == 0 && prevlineAverage == 0) {
-//                println("Ending character at row: \(rowCount)")
                 startedChar = false
                 
                 //double check that we are still in bounds
@@ -324,8 +323,6 @@ class PhotoManipulator: NSObject {
                     currentCharacter++
                 }
                 else {println("Error: out of bounds in segmenter")}
-                
-                
             }
             
             // Prep for next

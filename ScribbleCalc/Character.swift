@@ -22,4 +22,8 @@ struct ImgCharacter {
         endCol   = 0
         textCharacter = ""
     }
+    
+//    func setStartRow(row: Int) {
+//        self.startRow = 8
+//    }
 }
