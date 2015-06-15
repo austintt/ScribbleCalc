@@ -78,6 +78,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         charactersFoundLabel.text = "Found \(characters.count) characters"
         
         //flatten 2d array of found characters
+//        manipulator.flatten2dArrayWhereCharactersFound(characters, pixels: pixels2DArray)
         
         // Knn
         

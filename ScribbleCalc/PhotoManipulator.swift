@@ -12,8 +12,8 @@ import GPUImage
 
 class PhotoManipulator: NSObject {
     
-    let outputWidth  = 600
-    let outputHeight = 600
+    let outputWidth  = 30
+    let outputHeight = 30
     
     
     /****************************************************************
@@ -228,9 +228,9 @@ class PhotoManipulator: NSObject {
         }
     
         println("Converted pixels into 2d array!")
-//        for (var k = 0; k < outputHeight; k++) {
-//            println(pixels[k])
-//        }
+        for (var k = 0; k < outputHeight; k++) {
+            println(pixels[k])
+        }
         return pixels
     }
     
@@ -259,17 +259,17 @@ class PhotoManipulator: NSObject {
             for (var col = 0; col < outputHeight; col++) {
                 lineAverage += pixels[col][row]
             }
-
+            
             lineAverage = lineAverage / outputHeight
-
+            
             // If character is starting
             if (!startedChar && lineAverage > 0 && prevlineAverage > 0) {
                 newCharacter = ImgCharacter()
                 startedChar = true
-                newCharacter.startCol = columnCount - 1
+                newCharacter.startCol = columnCount - 2
             }
-            
-            // If character is ending
+                
+                // If character is ending
             else if (startedChar && lineAverage == 0 && prevlineAverage == 0) {
                 startedChar = false
                 newCharacter.endCol = columnCount
@@ -289,28 +289,28 @@ class PhotoManipulator: NSObject {
         
         
         // Find top and bottom of each character
-        // DEBUG - make this more efficient by stopping once found, instead of itterting 
+        // DEBUG - make this more efficient by stopping once found, instead of itterting
         // through each remaining char
         println("Row average:")
         for (var row = 0; row < outputHeight; row++) {
             for (var col = 0; col < outputWidth; col++) {
                 lineAverage += pixels[row][col]
             }
-
+            
             lineAverage = lineAverage / outputWidth
-
+            
             // If character is starting
             if (!startedChar && lineAverage > 0 && prevlineAverage > 0) {
                 startedChar = true
                 
                 //double check that we are still in bounds
                 if (currentCharacter < characters.count) {
-                    characters[currentCharacter].startRow = rowCount - 1
+                    characters[currentCharacter].startRow = rowCount - 2 // DEBUG DANGEROUS
                 }
                 else {println("Error: out of bounds in segmenter")}
             }
                 
-            // If character is ending
+                // If character is ending
             else if (startedChar && lineAverage == 0 && prevlineAverage == 0) {
                 startedChar = false
                 
@@ -328,25 +328,56 @@ class PhotoManipulator: NSObject {
             rowCount++
         }
         
-    
+        
         // Verify that the distance between start and end are big enough for char
         
+        
+        //Debug fix this so we don't need it
+        if (characters[0].startRow > 0) {
+            for (var i = 1; i < characters.count; i++) {
+                characters[i].startRow = characters[0].startRow
+                characters[i].endRow = characters[0].endRow
+            }
+        }
         
         //DEBUG
         for char in characters {
             print("SC: \(char.startCol) EC: \(char.endCol)\n")
             print("SR: \(char.startRow) ER: \(char.endRow)\n\n")
         }
+        
+        // DEBUG
+        //        println("Testing locations...")
+        //        for char in characters {
+        //            for
+        //        }
+        
+        
         return characters
     }
     
     /*****************************************************************
     * FLATTEN 2D ARRAY WHERE CHARACTERS FOUND
     *****************************************************************/
-    func flatten2dArrayWhereCharactersFound() {
+    func flatten2dArrayWhereCharactersFound(characterLocations: [ImgCharacter], pixels: [[Int]]) -> [[Int]]{
+        var locs = segmentCharacters(pixels)
+        var rows: [[Int]] = []
         
+        // Go through each character location
+        for loc in locs {
+            // Create a new array to hold row data
+            var newRow = [Int]()
+            
+            // For each row
+            for (var row = loc.startRow; row <= loc.endRow; row++) {
+                //Go through each column and get the value
+                for (var col = loc.startCol; col <= loc.endCol; col++) {
+                    newRow.append(pixels[row][col])
+                }
+            }
+            
+            rows.append(newRow)
+        }
+        return rows
     }
-    
-    
-    
 }
