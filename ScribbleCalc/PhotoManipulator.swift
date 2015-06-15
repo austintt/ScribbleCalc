@@ -12,8 +12,8 @@ import GPUImage
 
 class PhotoManipulator: NSObject {
     
-    let outputWidth  = 24
-    let outputHeight = 24
+    let outputWidth  = 600
+    let outputHeight = 600
     
     
     /****************************************************************
@@ -228,9 +228,9 @@ class PhotoManipulator: NSObject {
         }
     
         println("Converted pixels into 2d array!")
-        for (var k = 0; k < outputHeight; k++) {
-            println(pixels[k])
-        }
+//        for (var k = 0; k < outputHeight; k++) {
+//            println(pixels[k])
+//        }
         return pixels
     }
     
@@ -259,11 +259,11 @@ class PhotoManipulator: NSObject {
             for (var col = 0; col < outputHeight; col++) {
                 lineAverage += pixels[col][row]
             }
+
             lineAverage = lineAverage / outputHeight
-//            print("\(lineAverage) ")
+
             // If character is starting
             if (!startedChar && lineAverage > 0 && prevlineAverage > 0) {
-//                println("Starting character at column: \(columnCount - 1)")
                 newCharacter = ImgCharacter()
                 startedChar = true
                 newCharacter.startCol = columnCount - 1
@@ -271,7 +271,6 @@ class PhotoManipulator: NSObject {
             
             // If character is ending
             else if (startedChar && lineAverage == 0 && prevlineAverage == 0) {
-//                println("Ending character at column: \(columnCount)")
                 startedChar = false
                 newCharacter.endCol = columnCount
                 characters.append(newCharacter)
@@ -288,12 +287,10 @@ class PhotoManipulator: NSObject {
         lineAverage = 0
         startedChar = false
         
-//        println("Test before Rows")
-//        for char in characters {
-//            print("SC: \(char.startCol) EC: \(char.endCol)\n")
-//        }
         
         // Find top and bottom of each character
+        // DEBUG - make this more efficient by stopping once found, instead of itterting 
+        // through each remaining char
         println("Row average:")
         for (var row = 0; row < outputHeight; row++) {
             for (var col = 0; col < outputWidth; col++) {
@@ -335,20 +332,20 @@ class PhotoManipulator: NSObject {
         // Verify that the distance between start and end are big enough for char
         
         
-    
-        
         //DEBUG
         for char in characters {
             print("SC: \(char.startCol) EC: \(char.endCol)\n")
             print("SR: \(char.startRow) ER: \(char.endRow)\n\n")
         }
-        
-        
         return characters
     }
     
-    
-    
+    /*****************************************************************
+    * FLATTEN 2D ARRAY WHERE CHARACTERS FOUND
+    *****************************************************************/
+    func flatten2dArrayWhereCharactersFound() {
+        
+    }
     
     
     

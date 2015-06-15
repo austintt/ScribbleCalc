@@ -22,7 +22,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var testDataLabel: UILabel!
     var imagePicker: UIImagePickerController!
     var newMedia: Bool?
-    var trainingPixelData: [[String]] = []
+    var trainingPixelData: [[Int]] = []
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +77,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var characters = manipulator.segmentCharacters(pixels2DArray)
         charactersFoundLabel.text = "Found \(characters.count) characters"
         
-        
-        // Can we load training data yet?
+        //flatten 2d array of found characters
         
         // Knn
+        
     }
     
     /*************************************************************

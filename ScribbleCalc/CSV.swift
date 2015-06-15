@@ -21,9 +21,9 @@ import Foundation
 * Pixel data consists of an integer 0-255 where 0 represents
 * white and 255 represents black.
 *****************************************************************************/
-func getContentsOfCSV(fileName: String) -> [[String]] {
+func getContentsOfCSV(fileName: String) -> [[Int]] {
     let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "csv")
-    var rows: [[String]] = []
+    var rows: [[Int]] = []
     
     //get line of file and stick it into an array
     if let content = String(contentsOfFile:path!, encoding: NSUTF8StringEncoding, error: nil) {
@@ -31,15 +31,23 @@ func getContentsOfCSV(fileName: String) -> [[String]] {
         
         //insert each pixel into an array and put that array into an array
         for row in unSeparatedRowData {
-            var newRow: [String] = []
-            newRow = row.componentsSeparatedByString(",")
+            var newStringRow: [String] = []
+            var newIntRow: [Int] = []
+            newStringRow = row.componentsSeparatedByString(",")
             
             //make sure the row has the content we want
-            if newRow.count > 1 {
-                rows.append(newRow)
+            if newStringRow.count > 1 {
+                for (var i = 0; i < newStringRow.count; i++){
+                    let opNewInt = newStringRow[i].toInt()
+                    if (opNewInt != nil) {
+                        newIntRow.append(opNewInt!)
+                    }
+                }
+                rows.append(newIntRow)
             }
         }
         println("Captured \(rows.count) rows from \(fileName).csv")
+        println("Row length for training: \(rows[1].count)")
     }
     return rows
 }

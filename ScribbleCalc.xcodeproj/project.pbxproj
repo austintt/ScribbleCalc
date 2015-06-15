@@ -23,6 +23,7 @@
 		D9D235041B1501AA00FD521D /* PhotoManipulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D235031B1501AA00FD521D /* PhotoManipulator.swift */; };
 		D9D235061B15363A00FD521D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D235051B15363A00FD521D /* Extensions.swift */; };
 		D9D2350B1B16650900FD521D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D2350A1B16650900FD521D /* CoreImage.framework */; };
+		D9D3F9AB1B2C9793006D5966 /* Recognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		D9D235031B1501AA00FD521D /* PhotoManipulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManipulator.swift; sourceTree = "<group>"; };
 		D9D235051B15363A00FD521D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9D2350A1B16650900FD521D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				D94A633E1AF16711004DBF65 /* AppDelegate.swift */,
 				D94A63401AF16711004DBF65 /* ViewController.swift */,
+				D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */,
 				D9D235051B15363A00FD521D /* Extensions.swift */,
 				D9D235031B1501AA00FD521D /* PhotoManipulator.swift */,
 				D95A357D1B238F6F00FA156C /* PixelExtractor.swift */,
@@ -314,6 +317,7 @@
 			files = (
 				D93DBD491B1D12C9009918AC /* PixelData.swift in Sources */,
 				D95A357E1B238F6F00FA156C /* PixelExtractor.swift in Sources */,
+				D9D3F9AB1B2C9793006D5966 /* Recognizer.swift in Sources */,
 				D9D235061B15363A00FD521D /* Extensions.swift in Sources */,
 				D94A63411AF16711004DBF65 /* ViewController.swift in Sources */,
 				D94A633F1AF16711004DBF65 /* AppDelegate.swift in Sources */,
