@@ -21,23 +21,28 @@ import Foundation
 * Pixel data consists of an integer 0-255 where 0 represents
 * white and 255 represents black.
 *****************************************************************************/
-func getContentsOfCSV(fileName: String) -> [[Int]] {
+func getContentsOfCSV(fileName: String) -> (rows: [[Int]], trainingRowLabels: [Int]) {
     let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "csv")
     var rows: [[Int]] = []
+    var trainingRowLabels = [Int]()
     
     //get line of file and stick it into an array
     if let content = String(contentsOfFile:path!, encoding: NSUTF8StringEncoding, error: nil) {
         var unSeparatedRowData = content.componentsSeparatedByString("\n")
         
         //insert each pixel into an array and put that array into an array
-        for row in unSeparatedRowData {
+        //        for row in unSeparatedRowData {
+        for (var row = 1; row < unSeparatedRowData.count - 1; row++) {
             var newStringRow: [String] = []
             var newIntRow: [Int] = []
-            newStringRow = row.componentsSeparatedByString(",")
+            newStringRow = unSeparatedRowData[row].componentsSeparatedByString(",")
+            
+            // Extract training labels
+            trainingRowLabels.append(newStringRow[0].toInt()!)
             
             //make sure the row has the content we want
             if newStringRow.count > 1 {
-                for (var i = 0; i < newStringRow.count; i++){
+                for (var i = 1; i < newStringRow.count; i++){
                     let opNewInt = newStringRow[i].toInt()
                     if (opNewInt != nil) {
                         newIntRow.append(opNewInt!)
@@ -48,6 +53,7 @@ func getContentsOfCSV(fileName: String) -> [[Int]] {
         }
         println("Captured \(rows.count) rows from \(fileName).csv")
         println("Row length for training: \(rows[1].count)")
+        
     }
-    return rows
+    return (rows, trainingRowLabels)
 }

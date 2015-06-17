@@ -236,6 +236,8 @@ class PhotoManipulator: NSObject {
     
     /*****************************************************************
     * SEGMENT CHARACTERS
+    * 
+    * Margins are set to 1px on top, bottom, left, and right
     *****************************************************************/
     func segmentCharacters(pixels: [[Int]]) -> Array<ImgCharacter>{
         println("Segmenting")
@@ -247,6 +249,7 @@ class PhotoManipulator: NSObject {
         var rowCount = 0
         var newCharacter = ImgCharacter()
         var currentCharacter = 0
+        let margin = 2
         
         // TODO: Decide how big of a magrgin on each side of character. Currently none on left or top
         // But 1 on right and bottom.
@@ -266,7 +269,8 @@ class PhotoManipulator: NSObject {
             if (!startedChar && lineAverage > 0 && prevlineAverage > 0) {
                 newCharacter = ImgCharacter()
                 startedChar = true
-                newCharacter.startCol = columnCount - 2
+                assert(columnCount - margin >= 0, "Out of bounds on columnCount")
+                newCharacter.startCol = columnCount - margin
             }
                 
                 // If character is ending
@@ -305,7 +309,8 @@ class PhotoManipulator: NSObject {
                 
                 //double check that we are still in bounds
                 if (currentCharacter < characters.count) {
-                    characters[currentCharacter].startRow = rowCount - 2 // DEBUG DANGEROUS
+                    assert(rowCount - margin >= 0, "Out of bounds on rowCount")
+                    characters[currentCharacter].startRow = rowCount - margin // DEBUG DANGEROUS
                 }
                 else {println("Error: out of bounds in segmenter")}
             }

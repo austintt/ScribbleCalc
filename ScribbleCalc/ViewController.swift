@@ -22,7 +22,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var testDataLabel: UILabel!
     var imagePicker: UIImagePickerController!
     var newMedia: Bool?
-    var trainingPixelData: [[Int]] = []
+    var trainingRowData: [[Int]] = []
+    var trainingRowLabels = [Int]()
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             dispatch_async(dispatch_get_global_queue(priority, 0)) {
                 // do some task
                 hasLoadedTrainingData = true
-                self.trainingPixelData = getContentsOfCSV(trainingSource)
+                let csvContents = getContentsOfCSV(trainingSource)
+                self.trainingRowData = csvContents.rows
+                self.trainingRowLabels = csvContents.trainingRowLabels
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.trainingDataLabel.text = "Loaded pixel data from \(self.trainingPixelData.count - 1) training images"
+                    self.trainingDataLabel.text = "Loaded pixel data from \(self.trainingRowData.count) training images"
                 }
             }
         }
