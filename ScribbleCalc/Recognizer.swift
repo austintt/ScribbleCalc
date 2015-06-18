@@ -26,20 +26,28 @@ class Recognizer {
     /*****************************************************************
     * FIND NEAREST NEIGHBOR LABLES
     *****************************************************************/
-    func findNearestNeighborLabels(k: Int, trainingRows: [[Int]], testRow: [Int]) -> [Int]{
+    func findNearestNeighborLabels(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRow: [Int]) -> [Int]{
         var nearestNeighborLabels = [Int]()
         var nearestNeighbors = [Int: Double]()
+        var sortedNeighbors = [Int,Double]()
         
         for (var trainingRowIndex = 0; trainingRowIndex < trainingRows.count; trainingRowIndex++) {
             // Get the euclidean distance
             let distance = euclideanDistance(trainingRows[trainingRowIndex], b: testRow)
             var count = nearestNeighbors.count
-//            if (nearestNeighbors.count == 0 || distance < Array(nearestNeighbors.values)[nearestNeighbors.count - 1]) {
-//                nearestNeighbors[trainingRowLabes[trainingRowIndex]] = distance
-//            }
-            
-            
-            
+            if (nearestNeighbors.count == 0 || distance < Array(nearestNeighbors.values)[nearestNeighbors.count - 1]) {
+                nearestNeighbors[trainingRowLables[trainingRowIndex]] = distance
+                if (nearestNeighbors.count > k) {
+//                    nearestNeighbors = sorted(nearestNeighbors) {a,b in return a.1 >= b.1}
+                    sortedNeighbors = sorted(nearestNeighbors) {a,b in return a.1 >= b.1}
+                    sortedNeighbors.removeAtIndex(sortedNeighbors.count - 1)
+                }
+            }
+        }
+        
+        // Get the labels
+        for (var nearestNeighborsIndex = 0; nearestNeighborsIndex < sortedNeighbors.count; nearestNeighborsIndex++) {
+            nearestNeighborLabels[nearestNeighborsIndex] = sortedNeighbors[nearestNeighborsIndex].0
         }
         
         return nearestNeighborLabels
@@ -48,26 +56,38 @@ class Recognizer {
     /*****************************************************************
     * MODE
     *****************************************************************/
-    func mode() {
-        
+    func mode(nearestNeighborLabels: [Int]) -> Int {
+        var nearestNeighborsLabelsHistogram = [Int:Int]()
+        for (var nearestNeighborsLabelsIdx = 0; nearestNeighborsLabelsIdx < nearestNeighborLabels.count; nearestNeighborsLabelsIdx++) {
+            if (nearestNeighborsLabelsHistogram.indexForKey(nearestNeighborLabels[nearestNeighborsLabelsIdx]) == nil) {
+                nearestNeighborsLabelsHistogram[nearestNeighborLabels[nearestNeighborsLabelsIdx]] = 1
+            }
+            else {
+                nearestNeighborsLabelsHistogram[nearestNeighborLabels[nearestNeighborsLabelsIdx]]!++
+            }
+        }
+        var nearestNeighborsLabelsHistogramSorted = sorted(nearestNeighborsLabelsHistogram) {a,b in return -a.1 >= b.1}
+        return nearestNeighborsLabelsHistogramSorted[0].0
     }
     
     /*****************************************************************
     * KNN
     *****************************************************************/
-    func knn(k: Int, trainingRows: [[Int]], testRows: [[Int]]) {
+    func knn(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRows: [[Int]]) {
         var testRowLabels = [Int]()
-        var trainingRowLabels = [Int]()
         
         for (var testRowIndex = 0; testRowIndex < testRows.count; testRowIndex++) {
-            var nearestNeighborLabels = findNearestNeighborLabels(k, trainingRows: trainingRows, testRow: testRows[testRowIndex])
-//            var modeNearestNeighborLabel = mode()
+            var nearestNeighborLabels = findNearestNeighborLabels(k, trainingRows: trainingRows, trainingRowLables: trainingRowLables, testRow: testRows[testRowIndex])
+            var modeNearestNeighborLabel = mode(nearestNeighborLabels)
             
             // Set labels
-//            testRowLabels.append(modeNearestNeighborLabel)
+            testRowLabels.append(modeNearestNeighborLabel)
             
             // DEBUG print labels
             
+        }
+        for label in testRowLabels {
+            println("Label Guess: \(label)")
         }
     }
 }
