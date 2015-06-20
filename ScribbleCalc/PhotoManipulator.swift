@@ -140,6 +140,8 @@ class PhotoManipulator: NSObject {
         downFilter.forceProcessingAtSize(CGSize(width: width, height: height))
         let downSampledImage: UIImage = downFilter.imageByFilteringImage(originalImage)
         
+        println("DOWNSAMPLED AT \(downSampledImage.size.width) x \(downSampledImage.size.height)")
+        
         return downSampledImage
     }
     
@@ -179,13 +181,13 @@ class PhotoManipulator: NSObject {
     func altImageDump(uiimage: UIImage) -> Array<Int>{
         var pixels: Array<Int> = []
         let extractor = PixelExtractor(img: uiimage.CGImage!)
-        for var x = 0; x < outputWidth; x++ {
-            for var y = 0; y < outputHeight; y++ {
+        for var x = 0; x < Int(uiimage.size.width); x++ {
+            for var y = 0; y <  Int(uiimage.size.height); y++ {
                 pixels.append(extractor.color_at(x: x, y: y))
             }
         }
         
-        print("Got \(pixels.count) pixels")
+        println("Got \(pixels.count) pixels")
         return pixels
     }
     

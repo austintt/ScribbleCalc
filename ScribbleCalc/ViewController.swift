@@ -104,19 +104,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let imageOfRow = manipulator.imageFromARGB32Bitmap(newPixelRow, width: width, height: height)
             
             // Downsample to 28x28
-            manipulator.downsample(imageOfRow, width: 28, height: 28)
-            reConvertedImages.append(imageOfRow)
+            reConvertedImages.append(manipulator.downsample(imageOfRow, width: 28, height: 28))
             i++
         }
         
         println("RECONVERTED: \(reConvertedImages.count) images")
-        imageView.image = reConvertedImages[reConvertedImages.count - 1]
+        imageView.image = reConvertedImages[0]
         
         //Aggressively clean up
         flatTestRows = [[]]
         
         // Dump
         for convImage in reConvertedImages {
+            println("RECEIVED AT: \(convImage.size.width) X \(convImage.size.height)")
+            println("Size: \(convImage.size.width * convImage.size.height) ")
             flatTestRows.append(manipulator.altImageDump(convImage))
         }
         
