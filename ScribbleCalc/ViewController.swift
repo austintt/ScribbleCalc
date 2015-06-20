@@ -64,26 +64,66 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.testDataLabel.text = "Processing image..."
         let manipulator = PhotoManipulator()
         imageView.image = manipulator.cropToSquare((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
-        imageView.image = manipulator.downsample(imageView.image!)
+        imageView.image = manipulator.downsample(imageView.image!, width: outputWidth, height: outputHeight)
         imageView.image = manipulator.thresholdPhoto(imageView.image!)
         imageView.image = manipulator.invertPhoto(imageView.image!)
         
         // Convert
         self.testDataLabel.text = "Image processed! Getting pixel data..."
-        let testPixelData = manipulator.altImageDump(imageView.image!)
+        var testPixelData = manipulator.altImageDump(imageView.image!)
         self.testDataLabel.text = "Got \(testPixelData.count) pixels from test image!"
         
         // Get multi array
-        let pixels2DArray: [[Int]] = manipulator.get2dArrayFromPixelDump(testPixelData)
+        var pixels2DArray: [[Int]] = manipulator.get2dArrayFromPixelDump(testPixelData)
+        
+        //Aggressively clean up
+        testPixelData = []
         
         // Find characters
         var characters = manipulator.segmentCharacters(pixels2DArray)
         charactersFoundLabel.text = "Found \(characters.count) characters"
         
         //flatten 2d array of found characters
-//        manipulator.flatten2dArrayWhereCharactersFound(characters, pixels: pixels2DArray)
+        var flatTestRows = manipulator.flatten2dArrayWhereCharactersFound(characters, pixels: pixels2DArray)
+        
+        //Aggressively clean up
+        pixels2DArray = [[]]
+        
+        // Convert back to uiimage
+        var reConvertedImages = [UIImage]()
+        var i = 0
+        for row in flatTestRows {
+            var newPixelRow = [PixelData]()
+            for (var j = 0; j < row.count; j++) {
+                let newPixel = PixelData(value: row[j])
+                newPixelRow.append(newPixel)
+            }
+            let width = characters[i].endCol - characters[i].startCol + 1
+            let height = characters[i].endRow - characters[i].startRow + 1
+            println("Converting to width: \(width) height: \(height)")
+            let imageOfRow = manipulator.imageFromARGB32Bitmap(newPixelRow, width: width, height: height)
+            
+            // Downsample to 28x28
+            manipulator.downsample(imageOfRow, width: 28, height: 28)
+            reConvertedImages.append(imageOfRow)
+            i++
+        }
+        
+        println("RECONVERTED: \(reConvertedImages.count) images")
+        imageView.image = reConvertedImages[reConvertedImages.count - 1]
+        
+        //Aggressively clean up
+        flatTestRows = [[]]
+        
+        // Dump
+        for convImage in reConvertedImages {
+            flatTestRows.append(manipulator.altImageDump(convImage))
+        }
         
         // Knn
+        var rec = Recognizer()
+        println("Training Row data: \(trainingRowData.count)")
+        var recognizedLables = rec.knn(3, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
         
     }
     

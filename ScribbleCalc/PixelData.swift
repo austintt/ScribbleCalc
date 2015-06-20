@@ -8,8 +8,16 @@
 
 import Foundation
 public struct PixelData {
-    var a:UInt8 = 0
-    var r:UInt8
-    var g:UInt8
-    var b:UInt8
+    var a: UInt8
+    var r: UInt8
+    var g: UInt8
+    var b: UInt8
+
+    init (value: Int) {
+        self.a = 255
+        self.r = UInt8(value)
+        self.g = UInt8(value)
+        self.b = UInt8(value)
+    }
 }
+

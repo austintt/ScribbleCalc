@@ -73,7 +73,7 @@ class Recognizer {
     /*****************************************************************
     * KNN
     *****************************************************************/
-    func knn(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRows: [[Int]]) {
+    func knn(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRows: [[Int]]) -> [Int]{
         var testRowLabels = [Int]()
         
         for (var testRowIndex = 0; testRowIndex < testRows.count; testRowIndex++) {
@@ -82,12 +82,13 @@ class Recognizer {
             
             // Set labels
             testRowLabels.append(modeNearestNeighborLabel)
-            
-            // DEBUG print labels
-            
+
         }
+        // DEBUG print labels
         for label in testRowLabels {
             println("Label Guess: \(label)")
         }
+        
+        return testRowLabels
     }
 }

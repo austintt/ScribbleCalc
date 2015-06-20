@@ -10,10 +10,12 @@ import UIKit
 import CoreImage
 import GPUImage
 
+let outputWidth  = 500
+let outputHeight = 500
+
 class PhotoManipulator: NSObject {
     
-    let outputWidth  = 30
-    let outputHeight = 30
+    
     
     
     /****************************************************************
@@ -128,14 +130,14 @@ class PhotoManipulator: NSObject {
     * DOWNSAMPLE
     *
     *****************************************************************/
-    func downsample(originalImage: UIImage) -> UIImage {
+    func downsample(originalImage: UIImage, width: Int, height: Int) -> UIImage {
         println("Downsampling")
         
         // Create resample filter
         var downFilter = GPUImageLanczosResamplingFilter()
         
         // Apply filter
-        downFilter.forceProcessingAtSize(CGSize(width: outputWidth, height: outputHeight))
+        downFilter.forceProcessingAtSize(CGSize(width: width, height: height))
         let downSampledImage: UIImage = downFilter.imageByFilteringImage(originalImage)
         
         return downSampledImage
@@ -228,9 +230,9 @@ class PhotoManipulator: NSObject {
         }
     
         println("Converted pixels into 2d array!")
-        for (var k = 0; k < outputHeight; k++) {
-            println(pixels[k])
-        }
+//        for (var k = 0; k < outputHeight; k++) {
+//            println(pixels[k])
+//        }
         return pixels
     }
     
@@ -338,12 +340,15 @@ class PhotoManipulator: NSObject {
         
         
         //Debug fix this so we don't need it
-        if (characters[0].startRow > 0) {
-            for (var i = 1; i < characters.count; i++) {
-                characters[i].startRow = characters[0].startRow
-                characters[i].endRow = characters[0].endRow
+        if (characters.count > 0) {
+            if (characters[0].startRow > 0) {
+                for (var i = 1; i < characters.count; i++) {
+                    characters[i].startRow = characters[0].startRow
+                    characters[i].endRow = characters[0].endRow
+                }
             }
         }
+        
         
         //DEBUG
         for char in characters {
@@ -365,7 +370,8 @@ class PhotoManipulator: NSObject {
     * FLATTEN 2D ARRAY WHERE CHARACTERS FOUND
     *****************************************************************/
     func flatten2dArrayWhereCharactersFound(characterLocations: [ImgCharacter], pixels: [[Int]]) -> [[Int]]{
-        var locs = segmentCharacters(pixels)
+        println("Flattening 2d array...")
+        var locs = characterLocations
         var rows: [[Int]] = []
         
         // Go through each character location
@@ -383,6 +389,62 @@ class PhotoManipulator: NSObject {
             
             rows.append(newRow)
         }
+        for row in rows {
+            println(row.count)
+        }
         return rows
     }
+    
+    /*****************************************************************
+    * IMAGE FROM RGB 32 BITMAP
+    *****************************************************************/
+    func imageFromARGB32Bitmap(pixels:[PixelData], width: Int, height: Int)-> UIImage {
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo:CGBitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.rawValue)
+        let bitsPerComponent:Int = 8
+        let bitsPerPixel:Int = 32
+        
+        assert(pixels.count == Int(width * height))
+        
+        var data = pixels // Copy to mutable []
+        let providerRef = CGDataProviderCreateWithCFData(
+            NSData(bytes: &data, length: data.count * sizeof(PixelData))
+        )
+        
+        let cgim = CGImageCreate(
+            width,
+            height,
+            bitsPerComponent,
+            bitsPerPixel,
+            width * Int(sizeof(PixelData)),
+            rgbColorSpace,
+            bitmapInfo,
+            providerRef,
+            nil,
+            true,
+            kCGRenderingIntentDefault
+        )
+        return UIImage(CGImage: cgim)!
+    }
+    
+    
+    
+    func getUIImageForRGBAData(width: Int, height: Int, data: NSData) -> UIImage? {
+        let pixelData = data.bytes
+        let bytesPerPixel = 4
+        let scanWidth = bytesPerPixel * width
+        
+        let provider = CGDataProviderCreateWithData(nil, pixelData, height * scanWidth, nil)
+        
+        let colorSpaceRef = CGColorSpaceCreateDeviceRGB()
+        var bitmapInfo:CGBitmapInfo = .ByteOrderDefault;
+        bitmapInfo |= CGBitmapInfo(CGImageAlphaInfo.Last.rawValue)
+        let renderingIntent = kCGRenderingIntentDefault;
+        
+        let imageRef = CGImageCreate(width, height, 8, bytesPerPixel * 8, scanWidth, colorSpaceRef,
+            bitmapInfo, provider, nil, false, renderingIntent);
+        
+        return UIImage(CGImage: imageRef)
+    }
+    
 }
