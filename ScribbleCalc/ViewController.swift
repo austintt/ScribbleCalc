@@ -121,10 +121,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             flatTestRows.append(manipulator.altImageDump(convImage))
         }
         
+        // DEBUG
+        if (flatTestRows[0].count == 0){
+            flatTestRows.removeAtIndex(0)
+        }
+        
+        println("Attempting knn on \(flatTestRows.count)")
+        
         // Knn
         var rec = Recognizer()
         println("Training Row data: \(trainingRowData.count)")
-        var recognizedLables = rec.knn(3, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
+        var recognizedLables = rec.knn(5, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
         
     }
     

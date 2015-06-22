@@ -16,8 +16,8 @@ class Recognizer {
     func euclideanDistance(a: [Int], b: [Int]) -> Double{
         var distance: Double = 0
         for (var componentIndex = 0; componentIndex < a.count; componentIndex++) {
-            let delta = b[componentIndex] - a[componentIndex]
-            distance += Double(delta * delta)
+            let delta = Double(b[componentIndex] - a[componentIndex])
+            distance += delta * delta
         }
         distance = sqrt(distance)
         return distance
@@ -27,7 +27,7 @@ class Recognizer {
     * FIND NEAREST NEIGHBOR LABLES
     *****************************************************************/
     func findNearestNeighborLabels(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRow: [Int]) -> [Int]{
-        var nearestNeighborLabels = [Int]()
+        var nearestNeighborLabels: [Int] = []
         var nearestNeighbors = [Int: Double]()
         var sortedNeighbors = [Int,Double]()
         
@@ -47,7 +47,12 @@ class Recognizer {
         
         // Get the labels
         for (var nearestNeighborsIndex = 0; nearestNeighborsIndex < sortedNeighbors.count; nearestNeighborsIndex++) {
-            nearestNeighborLabels[nearestNeighborsIndex] = sortedNeighbors[nearestNeighborsIndex].0
+//            nearestNeighborLabels.insert(sortedNeighbors[nearestNeighborsIndex].0, atIndex: nearestNeighborsIndex)
+            nearestNeighborLabels.append(sortedNeighbors[nearestNeighborsIndex].0)
+            println("Guesses: ")
+            for guess in sortedNeighbors {
+                println(guess)
+            }
         }
         
         return nearestNeighborLabels
