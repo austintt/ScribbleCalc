@@ -28,15 +28,16 @@ class Recognizer {
     *****************************************************************/
     func findNearestNeighborLabels(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRow: [Int]) -> [Int]{
         var nearestNeighborLabels: [Int] = []
-        var nearestNeighbors = [Int: Double]()
+        var nearestNeighbors = [Int, Double]()
         var sortedNeighbors = [Int,Double]()
         
         for (var trainingRowIndex = 0; trainingRowIndex < trainingRows.count; trainingRowIndex++) {
             // Get the euclidean distance
             let distance = euclideanDistance(trainingRows[trainingRowIndex], b: testRow)
             var count = nearestNeighbors.count
-            if (nearestNeighbors.count == 0 || distance < Array(nearestNeighbors.values)[nearestNeighbors.count - 1]) {
-                nearestNeighbors[trainingRowLables[trainingRowIndex]] = distance
+            if (nearestNeighbors.count == 0 || distance < nearestNeighbors[nearestNeighbors.count - 1].1) {
+//                nearestNeighbors[trainingRowLables[trainingRowIndex]] = distance
+                nearestNeighbors.append(trainingRowLables[trainingRowIndex], distance)
                 if (nearestNeighbors.count > k) {
 //                    nearestNeighbors = sorted(nearestNeighbors) {a,b in return a.1 >= b.1}
                     sortedNeighbors = sorted(nearestNeighbors) {a,b in return a.1 >= b.1}
