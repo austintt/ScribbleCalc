@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */ = {isa = PBXBuildFile; fileRef = D91C9E0E1B0E36D600752433 /* trainingsample.csv */; };
 		D91C9E111B0E378A00752433 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C9E101B0E378A00752433 /* CSV.swift */; };
+		D9315D771B3930D700106A66 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = D9315D761B3930D700106A66 /* white.png */; };
 		D93610E81B3205D8008A7527 /* Neighbor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93610E71B3205D7008A7527 /* Neighbor.swift */; };
 		D93DBD491B1D12C9009918AC /* PixelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93DBD481B1D12C8009918AC /* PixelData.swift */; };
 		D94A633F1AF16711004DBF65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A633E1AF16711004DBF65 /* AppDelegate.swift */; };
@@ -18,6 +19,8 @@
 		D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94A63471AF16711004DBF65 /* LaunchScreen.xib */; };
 		D94A63551AF16711004DBF65 /* ScribbleCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */; };
 		D95A357E1B238F6F00FA156C /* PixelExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A357D1B238F6F00FA156C /* PixelExtractor.swift */; };
+		D95AFB761B3A05E4009962CF /* DummyDataTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95AFB751B3A05E4009962CF /* DummyDataTester.swift */; };
+		D95AFB781B3A0682009962CF /* mediumTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = D95AFB771B3A0682009962CF /* mediumTest.csv */; };
 		D96C97F61B28BDD60013A0B3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96C97F51B28BDD50013A0B3 /* Character.swift */; };
 		D9793D931B176CA500387021 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9793D901B176C5F00387021 /* GPUImage.framework */; };
 		D9793D951B176DA900387021 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9793D901B176C5F00387021 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -74,6 +77,7 @@
 /* Begin PBXFileReference section */
 		D91C9E0E1B0E36D600752433 /* trainingsample.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trainingsample.csv; sourceTree = "<group>"; };
 		D91C9E101B0E378A00752433 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		D9315D761B3930D700106A66 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white.png; path = ../../../../../Desktop/white.png; sourceTree = "<group>"; };
 		D93610E71B3205D7008A7527 /* Neighbor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neighbor.swift; sourceTree = "<group>"; };
 		D93DBD481B1D12C8009918AC /* PixelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelData.swift; sourceTree = "<group>"; };
 		D94A63391AF16711004DBF65 /* ScribbleCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScribbleCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +91,8 @@
 		D94A63531AF16711004DBF65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribbleCalcTests.swift; sourceTree = "<group>"; };
 		D95A357D1B238F6F00FA156C /* PixelExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelExtractor.swift; sourceTree = "<group>"; };
+		D95AFB751B3A05E4009962CF /* DummyDataTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataTester.swift; sourceTree = "<group>"; };
+		D95AFB771B3A0682009962CF /* mediumTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mediumTest.csv; sourceTree = "<group>"; };
 		D96C97F51B28BDD50013A0B3 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		D9793D871B176C5F00387021 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../../../../../Desktop/iOS/GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
 		D9D235031B1501AA00FD521D /* PhotoManipulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManipulator.swift; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 			children = (
 				D94A633E1AF16711004DBF65 /* AppDelegate.swift */,
 				D94A63401AF16711004DBF65 /* ViewController.swift */,
+				D95AFB751B3A05E4009962CF /* DummyDataTester.swift */,
 				D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */,
 				D93610E71B3205D7008A7527 /* Neighbor.swift */,
 				D9D235051B15363A00FD521D /* Extensions.swift */,
@@ -159,7 +166,9 @@
 		D94A633C1AF16711004DBF65 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9315D761B3930D700106A66 /* white.png */,
 				D91C9E0E1B0E36D600752433 /* trainingsample.csv */,
+				D95AFB771B3A0682009962CF /* mediumTest.csv */,
 				D94A633D1AF16711004DBF65 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -297,10 +306,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9315D771B3930D700106A66 /* white.png in Resources */,
 				D94A63441AF16711004DBF65 /* Main.storyboard in Resources */,
 				D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */,
 				D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */,
 				D94A63461AF16711004DBF65 /* Images.xcassets in Resources */,
+				D95AFB781B3A0682009962CF /* mediumTest.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +339,7 @@
 				D93610E81B3205D8008A7527 /* Neighbor.swift in Sources */,
 				D9D235041B1501AA00FD521D /* PhotoManipulator.swift in Sources */,
 				D96C97F61B28BDD60013A0B3 /* Character.swift in Sources */,
+				D95AFB761B3A05E4009962CF /* DummyDataTester.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

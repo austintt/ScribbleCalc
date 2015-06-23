@@ -218,14 +218,14 @@ class PhotoManipulator: NSObject {
     /*****************************************************************
     * GET 2D ARRAY FROM PIXEL DUMP
     *****************************************************************/
-    func get2dArrayFromPixelDump(inPixels: Array<Int>) -> [[Int]]{
-        var pixels: [[Int]] = Array(count: outputHeight, repeatedValue: Array(count: outputWidth, repeatedValue: 0))
+    func get2dArrayFromPixelDump(inPixels: Array<Int>, height: Int, width: Int) -> [[Int]]{
+        var pixels: [[Int]] = Array(count: height, repeatedValue: Array(count: width, repeatedValue: 0))
         var inPixelCount = 0
         
         //columns (width)
-        for (var i = 0; i < outputHeight; i++) {
+        for (var i = 0; i < height; i++) {
             //rows (height)
-            for (var j = outputWidth - 1; j >= 0; j--) {
+            for (var j = width - 1; j >= 0; j--) {
                 pixels[i][j] = inPixels[inPixelCount]
                 inPixelCount++
             }
@@ -236,6 +236,28 @@ class PhotoManipulator: NSObject {
 //            println(pixels[k])
 //        }
         return pixels
+    }
+    
+    
+    /*****************************************************************
+    * GET 2D ARRAY FROM PIXEL DUMP
+    *****************************************************************/
+    func insertPaddingIntoCharacter(imageTop: UIImage, height: Int, width: Int) -> UIImage{
+        
+        println("Attempting to add padding...")
+        var bottomImage:UIImage = UIImage(named:"white.png")!
+        
+        var newSize = CGSizeMake(bottomImage.size.width, bottomImage.size.height)
+        UIGraphicsBeginImageContext( newSize )
+        
+        bottomImage.drawInRect(CGRectMake(0,0,newSize.width,newSize.height))
+        
+        // decrease top image to 36x36
+        imageTop.drawInRect(CGRectMake(bottomImage.size.width / 7,bottomImage.size.height / 7,20,20), blendMode:kCGBlendModeNormal, alpha:1.0)
+        
+        var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+
+        return newImage
     }
     
     /*****************************************************************
@@ -350,6 +372,7 @@ class PhotoManipulator: NSObject {
                 }
             }
         }
+        
         
         
         //DEBUG

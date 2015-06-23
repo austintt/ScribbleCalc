@@ -21,10 +21,14 @@ import Foundation
 * Pixel data consists of an integer 0-255 where 0 represents
 * white and 255 represents black.
 *****************************************************************************/
-func getContentsOfCSV(fileName: String) -> (rows: [[Int]], trainingRowLabels: [Int]) {
+func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trainingRowLabels: [Int]) {
     let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "csv")
     var rows: [[Int]] = []
     var trainingRowLabels = [Int]()
+    var startPosition = 0
+    if (hasLables) {
+        startPosition = 1
+    }
     
     //get line of file and stick it into an array
     if let content = String(contentsOfFile:path!, encoding: NSUTF8StringEncoding, error: nil) {
@@ -32,13 +36,15 @@ func getContentsOfCSV(fileName: String) -> (rows: [[Int]], trainingRowLabels: [I
         
         //insert each pixel into an array and put that array into an array
         //        for row in unSeparatedRowData {
-        for (var row = 1; row < unSeparatedRowData.count - 1; row++) {
+        for (var row = startPosition; row < unSeparatedRowData.count - 1; row++) {
             var newStringRow: [String] = []
             var newIntRow: [Int] = []
             newStringRow = unSeparatedRowData[row].componentsSeparatedByString(",")
             
             // Extract training labels
-            trainingRowLabels.append(newStringRow[0].toInt()!)
+            if (hasLables) {
+                trainingRowLabels.append(newStringRow[0].toInt()!)
+            }
             
             //make sure the row has the content we want
             if newStringRow.count > 1 {
@@ -52,7 +58,7 @@ func getContentsOfCSV(fileName: String) -> (rows: [[Int]], trainingRowLabels: [I
             }
         }
         println("Captured \(rows.count) rows from \(fileName).csv")
-        println("Row length for training: \(rows[1].count)")
+//        println("Row length for training: \(rows[1].count)")
         
     }
     return (rows, trainingRowLabels)
