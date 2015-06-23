@@ -36,10 +36,10 @@ class Recognizer {
             let distance = euclideanDistance(trainingRows[trainingRowIndex], b: testRow)
             var count = nearestNeighbors.count
             if (nearestNeighbors.count == 0 || distance < nearestNeighbors[nearestNeighbors.count - 1].1) {
-//                nearestNeighbors[trainingRowLables[trainingRowIndex]] = distance
+                //                nearestNeighbors[trainingRowLables[trainingRowIndex]] = distance
                 nearestNeighbors.append(trainingRowLables[trainingRowIndex], distance)
                 if (nearestNeighbors.count > k) {
-//                    nearestNeighbors = sorted(nearestNeighbors) {a,b in return a.1 >= b.1}
+                    //                    nearestNeighbors = sorted(nearestNeighbors) {a,b in return a.1 >= b.1}
                     sortedNeighbors = sorted(nearestNeighbors) {a,b in return a.1 >= b.1}
                     sortedNeighbors.removeAtIndex(sortedNeighbors.count - 1)
                 }
@@ -48,7 +48,7 @@ class Recognizer {
         
         // Get the labels
         for (var nearestNeighborsIndex = 0; nearestNeighborsIndex < sortedNeighbors.count; nearestNeighborsIndex++) {
-//            nearestNeighborLabels.insert(sortedNeighbors[nearestNeighborsIndex].0, atIndex: nearestNeighborsIndex)
+            //            nearestNeighborLabels.insert(sortedNeighbors[nearestNeighborsIndex].0, atIndex: nearestNeighborsIndex)
             nearestNeighborLabels.append(sortedNeighbors[nearestNeighborsIndex].0)
             println("Guesses: ")
             for guess in sortedNeighbors {
@@ -88,7 +88,7 @@ class Recognizer {
             
             // Set labels
             testRowLabels.append(modeNearestNeighborLabel)
-
+            
         }
         // DEBUG print labels
         for label in testRowLabels {
