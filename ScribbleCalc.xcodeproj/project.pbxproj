@@ -20,7 +20,8 @@
 		D94A63551AF16711004DBF65 /* ScribbleCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */; };
 		D95A357E1B238F6F00FA156C /* PixelExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A357D1B238F6F00FA156C /* PixelExtractor.swift */; };
 		D95AFB761B3A05E4009962CF /* DummyDataTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95AFB751B3A05E4009962CF /* DummyDataTester.swift */; };
-		D95AFB781B3A0682009962CF /* mediumTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = D95AFB771B3A0682009962CF /* mediumTest.csv */; };
+		D95AFB7C1B3A186F009962CF /* testM.csv in Resources */ = {isa = PBXBuildFile; fileRef = D95AFB7B1B3A186F009962CF /* testM.csv */; };
+		D95AFB7E1B3A18F4009962CF /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = D95AFB7D1B3A18F4009962CF /* test.csv */; };
 		D96C97F61B28BDD60013A0B3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96C97F51B28BDD50013A0B3 /* Character.swift */; };
 		D9793D931B176CA500387021 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9793D901B176C5F00387021 /* GPUImage.framework */; };
 		D9793D951B176DA900387021 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9793D901B176C5F00387021 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -92,7 +93,8 @@
 		D94A63541AF16711004DBF65 /* ScribbleCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribbleCalcTests.swift; sourceTree = "<group>"; };
 		D95A357D1B238F6F00FA156C /* PixelExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelExtractor.swift; sourceTree = "<group>"; };
 		D95AFB751B3A05E4009962CF /* DummyDataTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataTester.swift; sourceTree = "<group>"; };
-		D95AFB771B3A0682009962CF /* mediumTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mediumTest.csv; sourceTree = "<group>"; };
+		D95AFB7B1B3A186F009962CF /* testM.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testM.csv; sourceTree = "<group>"; };
+		D95AFB7D1B3A18F4009962CF /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		D96C97F51B28BDD50013A0B3 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		D9793D871B176C5F00387021 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../../../../../Desktop/iOS/GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
 		D9D235031B1501AA00FD521D /* PhotoManipulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManipulator.swift; sourceTree = "<group>"; };
@@ -168,7 +170,8 @@
 			children = (
 				D9315D761B3930D700106A66 /* white.png */,
 				D91C9E0E1B0E36D600752433 /* trainingsample.csv */,
-				D95AFB771B3A0682009962CF /* mediumTest.csv */,
+				D95AFB7D1B3A18F4009962CF /* test.csv */,
+				D95AFB7B1B3A186F009962CF /* testM.csv */,
 				D94A633D1AF16711004DBF65 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -308,10 +311,11 @@
 			files = (
 				D9315D771B3930D700106A66 /* white.png in Resources */,
 				D94A63441AF16711004DBF65 /* Main.storyboard in Resources */,
+				D95AFB7C1B3A186F009962CF /* testM.csv in Resources */,
 				D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */,
 				D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */,
+				D95AFB7E1B3A18F4009962CF /* test.csv in Resources */,
 				D94A63461AF16711004DBF65 /* Images.xcassets in Resources */,
-				D95AFB781B3A0682009962CF /* mediumTest.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

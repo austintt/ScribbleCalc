@@ -12,10 +12,11 @@ class DummyDataTest {
     var dummyTestRows: [[Int]]
     
     init() {
-        let csvContents = getContentsOfCSV("mediumTest", false)
-        dummyTestRows = csvContents.rows
+        let csvContents = getContentsOfCSV(testingSource, false)
+        self.dummyTestRows = csvContents.rows
         
         println("Got \(dummyTestRows.count) from dummy csv data")
+
     }
     
     func makePixelRows() {

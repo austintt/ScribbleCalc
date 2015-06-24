@@ -26,6 +26,7 @@ func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trai
     var rows: [[Int]] = []
     var trainingRowLabels = [Int]()
     var startPosition = 0
+
     if (hasLables) {
         startPosition = 1
     }
@@ -33,10 +34,15 @@ func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trai
     //get line of file and stick it into an array
     if let content = String(contentsOfFile:path!, encoding: NSUTF8StringEncoding, error: nil) {
         var unSeparatedRowData = content.componentsSeparatedByString("\n")
+        var limit = unSeparatedRowData.count - 1
+        if (!hasLables) {
+            limit = 20
+        }
+        
         
         //insert each pixel into an array and put that array into an array
         //        for row in unSeparatedRowData {
-        for (var row = startPosition; row < unSeparatedRowData.count - 1; row++) {
+        for (var row = 1; row < limit; row++) {
             var newStringRow: [String] = []
             var newIntRow: [Int] = []
             newStringRow = unSeparatedRowData[row].componentsSeparatedByString(",")
@@ -48,7 +54,7 @@ func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trai
             
             //make sure the row has the content we want
             if newStringRow.count > 1 {
-                for (var i = 1; i < newStringRow.count; i++){
+                for (var i = startPosition; i < newStringRow.count; i++){
                     let opNewInt = newStringRow[i].toInt()
                     if (opNewInt != nil) {
                         newIntRow.append(opNewInt!)

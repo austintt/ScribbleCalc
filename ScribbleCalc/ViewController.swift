@@ -11,7 +11,7 @@ import UIKit
 
 //global consts
 let trainingSource = "trainingsample"
-let testingSource = "validationsample"
+let testingSource = "test"
 var hasLoadedTrainingData = false
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -25,6 +25,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var newMedia: Bool?
     var trainingRowData: [[Int]] = []
     var trainingRowLabels = [Int]()
+    var dummyData = DummyDataTest()
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func loadTestData(sender: AnyObject) {
-        var dummyData = DummyDataTest()
         var testRow = dummyData.getRandom()
         println("Testing dummy data")
         println(testRow)
