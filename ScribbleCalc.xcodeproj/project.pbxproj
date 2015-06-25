@@ -25,6 +25,7 @@
 		D96C97F61B28BDD60013A0B3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96C97F51B28BDD50013A0B3 /* Character.swift */; };
 		D9793D931B176CA500387021 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9793D901B176C5F00387021 /* GPUImage.framework */; };
 		D9793D951B176DA900387021 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9793D901B176C5F00387021 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D99A580F1B3B51F5002E2594 /* scribbleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D99A580E1B3B51F5002E2594 /* scribbleIcon.png */; };
 		D9D235041B1501AA00FD521D /* PhotoManipulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D235031B1501AA00FD521D /* PhotoManipulator.swift */; };
 		D9D235061B15363A00FD521D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D235051B15363A00FD521D /* Extensions.swift */; };
 		D9D2350B1B16650900FD521D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D2350A1B16650900FD521D /* CoreImage.framework */; };
@@ -97,6 +98,7 @@
 		D95AFB7D1B3A18F4009962CF /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		D96C97F51B28BDD50013A0B3 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		D9793D871B176C5F00387021 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../../../../../Desktop/iOS/GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
+		D99A580E1B3B51F5002E2594 /* scribbleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scribbleIcon.png; sourceTree = "<group>"; };
 		D9D235031B1501AA00FD521D /* PhotoManipulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManipulator.swift; sourceTree = "<group>"; };
 		D9D235051B15363A00FD521D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9D2350A1B16650900FD521D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -170,6 +172,7 @@
 			children = (
 				D9315D761B3930D700106A66 /* white.png */,
 				D91C9E0E1B0E36D600752433 /* trainingsample.csv */,
+				D99A580E1B3B51F5002E2594 /* scribbleIcon.png */,
 				D95AFB7D1B3A18F4009962CF /* test.csv */,
 				D95AFB7B1B3A186F009962CF /* testM.csv */,
 				D94A633D1AF16711004DBF65 /* Info.plist */,
@@ -311,6 +314,7 @@
 			files = (
 				D9315D771B3930D700106A66 /* white.png in Resources */,
 				D94A63441AF16711004DBF65 /* Main.storyboard in Resources */,
+				D99A580F1B3B51F5002E2594 /* scribbleIcon.png in Resources */,
 				D95AFB7C1B3A186F009962CF /* testM.csv in Resources */,
 				D94A63491AF16711004DBF65 /* LaunchScreen.xib in Resources */,
 				D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */,

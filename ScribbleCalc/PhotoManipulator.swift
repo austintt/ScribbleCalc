@@ -240,7 +240,7 @@ class PhotoManipulator: NSObject {
     
     
     /*****************************************************************
-    * GET 2D ARRAY FROM PIXEL DUMP
+    * INSERT PADDING INTO CHARACTER
     *****************************************************************/
     func insertPaddingIntoCharacter(imageTop: UIImage, height: Int, width: Int) -> UIImage{
         
@@ -256,6 +256,7 @@ class PhotoManipulator: NSObject {
         imageTop.drawInRect(CGRectMake(bottomImage.size.width / 7,bottomImage.size.height / 7,20,20), blendMode:kCGBlendModeNormal, alpha:1.0)
         
         var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        newImage = newImage.imageRotatedByDegrees(-90.0, flip: false)
 
         return newImage
     }
@@ -360,20 +361,25 @@ class PhotoManipulator: NSObject {
         }
         
         
-        // Verify that the distance between start and end are big enough for char
-        
-        
         //Debug fix this so we don't need it
         if (characters.count > 0) {
             if (characters[0].startRow > 0) {
                 for (var i = 1; i < characters.count; i++) {
                     characters[i].startRow = characters[0].startRow
                     characters[i].endRow = characters[0].endRow
+                    println("Here")
                 }
             }
         }
         
-        
+        // Verify that the distance between start and end are big enough for char
+        for (var i = 0; i < characters.count; i++) {
+            //get rid of things that are too small
+            if ((characters[i].endCol - characters[i].startCol) < 8) {
+                println("FOUND SOMETHING TOO SMALL")
+                characters.removeAtIndex(i)
+            }
+        }
         
         //DEBUG
         for char in characters {

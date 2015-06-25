@@ -36,7 +36,7 @@ func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trai
         var unSeparatedRowData = content.componentsSeparatedByString("\n")
         var limit = unSeparatedRowData.count - 1
         if (!hasLables) {
-            limit = 20
+            limit = 30
         }
         
         

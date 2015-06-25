@@ -116,6 +116,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Find characters
         var characters = manipulator.segmentCharacters(pixels2DArray)
+        
+        // Fail gracefully if no characters are found
+        if (characters.count < 1 || characters.count > 10) {
+            charactersFoundLabel.text = "ERROR: NO CHARACTERS FOUND, TRY AGAIN"
+            return
+        }
         charactersFoundLabel.text = "Found \(characters.count) characters"
         
         //flatten 2d array of found characters
@@ -155,11 +161,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             println("RECEIVED AT: \(reConvertedImages[i].size.width) X \(reConvertedImages[i].size.height)")
             println("Size: \(reConvertedImages[i].size.width * reConvertedImages[i].size.height) ")
             
-            //padding
+            // Padding
             reConvertedImages[i] = manipulator.insertPaddingIntoCharacter(reConvertedImages[i], height: 28, width: 28)
             
             flatTestRows.append(manipulator.altImageDump(reConvertedImages[i]))
         }
+        
+        var dataCheck = manipulator.get2dArrayFromPixelDump(flatTestRows[1], height: 28, width: 28)
+        println(dataCheck)
         
         imageView.image = reConvertedImages[0]
 //        for row in flatTestRows {
@@ -184,10 +193,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         println("Attempting knn on \(flatTestRows.count)")
         
 //        // Knn
-//        var rec = Recognizer()
-//        println("Training Row data: \(trainingRowData.count)")
-//        var recognizedLables = rec.knn(5, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
-
+        var rec = Recognizer()
+        println("Training Row data: \(trainingRowData.count)")
+        var recognizedLables = rec.knn(5, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
+        //DEBUG
+        self.charGuess.text = "Guess: \(recognizedLables[0])"
+        self.charGuess.textColor = UIColor.redColor()
         
     }
     
