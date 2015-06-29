@@ -52,6 +52,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 //                    let manipulator = PhotoManipulator()
 //                    let testImg = manipulator.imageFromARGB32Bitmap(newPixelRow, width: 28, height: 28)
 //                    self.imageView.image = testImg
+                    println("TRAINING DATA:")
+                    var manip = PhotoManipulator()
+                    println(manip.get2dArrayFromPixelDump(self.trainingRowData[3], height: 28, width: 28))
+                    
                 }
             }
         }
@@ -144,8 +148,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             println("Converting to width: \(width) height: \(height)")
             let imageOfRow = manipulator.imageFromARGB32Bitmap(newPixelRow, width: width, height: height)
             
-            // Downsample to 28x28
-            reConvertedImages.append(manipulator.downsample(imageOfRow, width: 18, height: 25))
+            // Downsample to 14x20
+            reConvertedImages.append(manipulator.downsample(imageOfRow, width: 14, height: 20))
             i++
             
         }
@@ -168,6 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         var dataCheck = manipulator.get2dArrayFromPixelDump(flatTestRows[1], height: 28, width: 28)
+        println("Printing DatqaCheck")
         println(dataCheck)
         
         imageView.image = reConvertedImages[0]

@@ -225,7 +225,7 @@ class PhotoManipulator: NSObject {
         //columns (width)
         for (var i = 0; i < height; i++) {
             //rows (height)
-            for (var j = width - 1; j >= 0; j--) {
+            for (var j = 0; j < width; j++) {
                 pixels[i][j] = inPixels[inPixelCount]
                 inPixelCount++
             }
@@ -253,7 +253,7 @@ class PhotoManipulator: NSObject {
         bottomImage.drawInRect(CGRectMake(0,0,newSize.width,newSize.height))
         
         // decrease top image to 36x36
-        imageTop.drawInRect(CGRectMake(bottomImage.size.width / 7,bottomImage.size.height / 7,20,20), blendMode:kCGBlendModeNormal, alpha:1.0)
+        imageTop.drawInRect(CGRectMake(bottomImage.size.width / 4,bottomImage.size.height / 7,14,20), blendMode:kCGBlendModeNormal, alpha:1.0)
         
         var newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
         newImage = newImage.imageRotatedByDegrees(-90.0, flip: false)
