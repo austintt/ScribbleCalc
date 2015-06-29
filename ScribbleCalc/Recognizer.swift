@@ -97,9 +97,7 @@ class Recognizer {
             var modeNNLable = mode(nnLables)
             testLables.append(modeNNLable)
         }
-        
-        
-    
+
         return testLables
     }
     

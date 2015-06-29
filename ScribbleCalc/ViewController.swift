@@ -202,7 +202,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         println("Training Row data: \(trainingRowData.count)")
         var recognizedLables = rec.knn(5, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
         //DEBUG
-        self.charGuess.text = "Guess: \(recognizedLables[0])"
+        var labels = ""
+        for label in recognizedLables {
+            labels += "\(label) "
+        }
+        self.charGuess.text = "Guess: \(labels)"
         self.charGuess.textColor = UIColor.redColor()
         
     }
