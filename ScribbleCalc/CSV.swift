@@ -21,10 +21,10 @@ import Foundation
 * Pixel data consists of an integer 0-255 where 0 represents
 * white and 255 represents black.
 *****************************************************************************/
-func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trainingRowLabels: [Int]) {
+func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trainingRowLabels: [String]) {
     let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "csv")
     var rows: [[Int]] = []
-    var trainingRowLabels = [Int]()
+    var trainingRowLabels = [String]()
     var startPosition = 0
 
     if (hasLables) {
@@ -49,7 +49,7 @@ func getContentsOfCSV(fileName: String, hasLables: Bool) -> (rows: [[Int]], trai
             
             // Extract training labels
             if (hasLables) {
-                trainingRowLabels.append(newStringRow[0].toInt()!)
+                trainingRowLabels.append(newStringRow[0])
             }
             
             //make sure the row has the content we want

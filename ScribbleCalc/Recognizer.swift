@@ -29,9 +29,9 @@ class Recognizer {
     /*****************************************************************
     * NEW FIND NEAREST NEIGHBOR LABLES
     *****************************************************************/
-    func findNearestNeighborLables(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRow: [Int]) -> [Int]{
-        var nearestNeighborLabels = [Int]()
-        var nearestNeighbors: [(key: Int, value: Double)] = []
+    func findNearestNeighborLables(k: Int, trainingRows: [[Int]], trainingRowLables: [String], testRow: [Int]) -> [String]{
+        var nearestNeighborLabels = [String]()
+        var nearestNeighbors: [(key: String, value: Double)] = []
         println("Finding NN Lables")
         
         assert(trainingRows.count > 0)
@@ -67,28 +67,28 @@ class Recognizer {
     /*****************************************************************
     * MODE
     *****************************************************************/
-    func mode(lables: [Int]) -> Int {
+    func mode(lables: [String]) -> String {
         var nearestNeighborsLabelsHistogram = [Int:Int]()
         assert(lables.count > 0)
         for (var i = 0; i < lables.count; i++) {
-            if (nearestNeighborsLabelsHistogram.indexForKey(lables[i]) == nil) {
-                nearestNeighborsLabelsHistogram[lables[i]] = 1
+            if (nearestNeighborsLabelsHistogram.indexForKey(lables[i].toInt()!) == nil) {
+                nearestNeighborsLabelsHistogram[lables[i].toInt()!] = 1
             }
             else {
-                nearestNeighborsLabelsHistogram[lables[i]]!++
+                nearestNeighborsLabelsHistogram[lables[i].toInt()!]!++
             }
         }
         var nearestNeighborsLabelsHistogramSorted = sorted(nearestNeighborsLabelsHistogram) {a,b in return a.1 >= b.1}
         var labelsMode = nearestNeighborsLabelsHistogramSorted[0].0
         println("MODE: \(labelsMode)")
-        return labelsMode
+        return "\(labelsMode)"
     }
     
     /*****************************************************************
     * KNN
     *****************************************************************/
-    func knn(k: Int, trainingRows: [[Int]], trainingRowLables: [Int], testRows: [[Int]]) -> [Int]{
-        var testLables = [Int]()
+    func knn(k: Int, trainingRows: [[Int]], trainingRowLables: [String], testRows: [[Int]]) -> [String]{
+        var testLables = [String]()
         
         for testRow in testRows {
             // Get NN Lables

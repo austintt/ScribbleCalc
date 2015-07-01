@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var imagePicker: UIImagePickerController!
     var newMedia: Bool?
     var trainingRowData: [[Int]] = []
-    var trainingRowLabels = [Int]()
+    var trainingRowLabels = [String]()
     var dummyData = DummyDataTest()
      
     override func viewDidLoad() {
