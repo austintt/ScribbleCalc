@@ -10,7 +10,7 @@ import UIKit
 //import MobileCoreServices
 
 //global consts
-let trainingSource = "trainingsample"
+let trainingSource = "trainingsampleWithPlus"
 let testingSource = "test"
 var hasLoadedTrainingData = false
 
@@ -200,7 +200,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 //        // Knn
         var rec = Recognizer()
         println("Training Row data: \(trainingRowData.count)")
-        var recognizedLables = rec.knn(5, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
+        var recognizedLables = rec.knn(4, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
         //DEBUG
         var labels = ""
         for label in recognizedLables {

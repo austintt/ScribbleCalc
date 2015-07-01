@@ -68,20 +68,54 @@ class Recognizer {
     * MODE
     *****************************************************************/
     func mode(lables: [String]) -> String {
+        var finalLabel = ""
         var nearestNeighborsLabelsHistogram = [Int:Int]()
         assert(lables.count > 0)
         for (var i = 0; i < lables.count; i++) {
-            if (nearestNeighborsLabelsHistogram.indexForKey(lables[i].toInt()!) == nil) {
-                nearestNeighborsLabelsHistogram[lables[i].toInt()!] = 1
+            if (nearestNeighborsLabelsHistogram.indexForKey(lables[i].hashValue) == nil) {
+                nearestNeighborsLabelsHistogram[lables[i].hashValue] = 1
             }
             else {
-                nearestNeighborsLabelsHistogram[lables[i].toInt()!]!++
+                nearestNeighborsLabelsHistogram[lables[i].hashValue]!++
             }
         }
         var nearestNeighborsLabelsHistogramSorted = sorted(nearestNeighborsLabelsHistogram) {a,b in return a.1 >= b.1}
         var labelsMode = nearestNeighborsLabelsHistogramSorted[0].0
-        println("MODE: \(labelsMode)")
-        return "\(labelsMode)"
+//        if (labelsMode == 4799450059485597605) {
+//            finalLabel = "+"
+//        }
+//        else {
+//            finalLabel = "\(labelsMode)"
+//        }
+        switch labelsMode {
+        case 4799450059485597605:
+            finalLabel = "+"
+        case 4799450059485597618:
+            finalLabel = "0"
+        case 4799450059485597623:
+            finalLabel = "1"
+        case 4799450059485597624:
+            finalLabel = "2"
+        case 4799450059485597629:
+            finalLabel = "3"
+        case 4799450059485597630:
+            finalLabel = "4"
+        case 4799450059485597571:
+            finalLabel = "5"
+        case 4799450059485597572:
+            finalLabel = "6"
+        case 4799450059485597577:
+            finalLabel = "7"
+        case 4799450059485597578:
+            finalLabel = "8"
+        case 4799450059485597583:
+            finalLabel = "9"
+        default:
+            finalLabel = "!"
+
+        }
+        println("MODE: \(finalLabel)")
+        return finalLabel
     }
     
     /*****************************************************************

@@ -31,6 +31,7 @@
 		D9D235061B15363A00FD521D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D235051B15363A00FD521D /* Extensions.swift */; };
 		D9D2350B1B16650900FD521D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D2350A1B16650900FD521D /* CoreImage.framework */; };
 		D9D3F9AB1B2C9793006D5966 /* Recognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */; };
+		D9E41A8D1B446E240045026E /* trainingsampleWithPlus.csv in Resources */ = {isa = PBXBuildFile; fileRef = D9E41A8C1B446E240045026E /* trainingsampleWithPlus.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		D9D235051B15363A00FD521D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9D2350A1B16650900FD521D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recognizer.swift; sourceTree = "<group>"; };
+		D9E41A8C1B446E240045026E /* trainingsampleWithPlus.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trainingsampleWithPlus.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				D9315D761B3930D700106A66 /* white.png */,
+				D9E41A8C1B446E240045026E /* trainingsampleWithPlus.csv */,
 				D91C9E0E1B0E36D600752433 /* trainingsample.csv */,
 				D99A580E1B3B51F5002E2594 /* scribbleIcon.png */,
 				D95AFB7D1B3A18F4009962CF /* test.csv */,
@@ -323,6 +326,7 @@
 				D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */,
 				D95AFB7E1B3A18F4009962CF /* test.csv in Resources */,
 				D94A63461AF16711004DBF65 /* Images.xcassets in Resources */,
+				D9E41A8D1B446E240045026E /* trainingsampleWithPlus.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
