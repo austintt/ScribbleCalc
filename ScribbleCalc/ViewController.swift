@@ -175,7 +175,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         println("Printing DatqaCheck")
         println(dataCheck)
         
-        imageView.image = reConvertedImages[0]
+        //imageView.image = reConvertedImages[0]
 //        for row in flatTestRows {
 //            // Insert padding
 //            var paddedFlatData = manipulator.insertPaddingIntoCharacter(row, height: 18, width: 25)

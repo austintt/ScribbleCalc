@@ -124,9 +124,10 @@ class Recognizer {
     func knn(k: Int, trainingRows: [[Int]], trainingRowLables: [String], testRows: [[Int]]) -> [String]{
         var testLables = [String]()
         
-        for testRow in testRows {
+//        for testRow in testRows {
+        for (var i = testRows.count - 1; i >= 0; i--) {
             // Get NN Lables
-            var nnLables = findNearestNeighborLables(k, trainingRows: trainingRows, trainingRowLables: trainingRowLables, testRow: testRow)
+            var nnLables = findNearestNeighborLables(k, trainingRows: trainingRows, trainingRowLables: trainingRowLables, testRow: testRows[i])
             // Get mode
             var modeNNLable = mode(nnLables)
             testLables.append(modeNNLable)
