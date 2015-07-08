@@ -45,8 +45,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     
                     //DISPLAY TRAINING DATA
                     var newPixelRow = [PixelData]()
-                    for (var j = 0; j < self.trainingRowData[6].count; j++) {
-                        let newPixel = PixelData(value: self.trainingRowData[6][j])
+                    for (var j = 0; j < self.trainingRowData[4968].count; j++) {
+                        let newPixel = PixelData(value: self.trainingRowData[4968][j])
                         newPixelRow.append(newPixel)
                     }
                     let manipulator = PhotoManipulator()
@@ -55,8 +55,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     println("TRAINING DATA:")
                     var manip = PhotoManipulator()
 
-                    println(manip.get2dArrayFromPixelDump(self.trainingRowData[6], height: 28, width: 28))
-                    println("Label: \(self.trainingRowLabels[6])")
+                    println(manip.get2dArrayFromPixelDump(self.trainingRowData[4968], height: 28, width: 28))
+                    println("Label: \(self.trainingRowLabels[4968])")
                 }
             }
         }
@@ -168,7 +168,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             println("Size: \(reConvertedImages[i].size.width * reConvertedImages[i].size.height) ")
             
             //threshold again?
-            reConvertedImages[i] = manipulator.thresholdPhoto(reConvertedImages[i])
+//            reConvertedImages[i] = manipulator.thresholdPhoto(reConvertedImages[i])
             
             // Padding
             reConvertedImages[i] = manipulator.insertPaddingIntoCharacter(reConvertedImages[i], height: 28, width: 28)
@@ -176,9 +176,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             flatTestRows.append(manipulator.altImageDump(reConvertedImages[i]))
         }
         
-//        var dataCheck = manipulator.get2dArrayFromPixelDump(flatTestRows[1], height: 28, width: 28)
-//        println("Printing DatqaCheck")
-//        println(dataCheck)
+        var dataCheck = manipulator.get2dArrayFromPixelDump(flatTestRows[2], height: 28, width: 28)
+        println("Printing DatqaCheck")
+        println(dataCheck)
         
         //imageView.image = reConvertedImages[0]
 //        for row in flatTestRows {

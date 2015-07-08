@@ -90,6 +90,8 @@ class Recognizer {
         switch labelsMode {
         case 4799450059485597605:
             finalLabel = "+"
+        case 4799450059485597611:
+            finalLabel = "-"
         case 4799450059485597618:
             finalLabel = "0"
         case 4799450059485597623:
