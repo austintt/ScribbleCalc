@@ -10,7 +10,7 @@ import UIKit
 //import MobileCoreServices
 
 //global consts
-let trainingSource = "trainingsampleWithPlus"
+let trainingSource = "convertedTraining"
 let testingSource = "test"
 var hasLoadedTrainingData = false
 
@@ -44,18 +44,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.trainingDataLabel.text = "Loaded pixel data from \(self.trainingRowData.count) training images"
                     
                     //DISPLAY TRAINING DATA
-//                    var newPixelRow = [PixelData]()
-//                    for (var j = 0; j < self.trainingRowData[36].count; j++) {
-//                        let newPixel = PixelData(value: self.trainingRowData[36][j])
-//                        newPixelRow.append(newPixel)
-//                    }
-//                    let manipulator = PhotoManipulator()
-//                    let testImg = manipulator.imageFromARGB32Bitmap(newPixelRow, width: 28, height: 28)
-//                    self.imageView.image = testImg
+                    var newPixelRow = [PixelData]()
+                    for (var j = 0; j < self.trainingRowData[6].count; j++) {
+                        let newPixel = PixelData(value: self.trainingRowData[6][j])
+                        newPixelRow.append(newPixel)
+                    }
+                    let manipulator = PhotoManipulator()
+                    let testImg = manipulator.imageFromARGB32Bitmap(newPixelRow, width: 28, height: 28)
+                    self.imageView.image = testImg
                     println("TRAINING DATA:")
                     var manip = PhotoManipulator()
-                    println(manip.get2dArrayFromPixelDump(self.trainingRowData[3], height: 28, width: 28))
-                    
+
+                    println(manip.get2dArrayFromPixelDump(self.trainingRowData[6], height: 28, width: 28))
+                    println("Label: \(self.trainingRowLabels[6])")
                 }
             }
         }
@@ -152,6 +153,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             reConvertedImages.append(manipulator.downsample(imageOfRow, width: 14, height: 20))
             i++
             
+            
         }
         
         println("RECONVERTED: \(reConvertedImages.count) images")
@@ -165,15 +167,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             println("RECEIVED AT: \(reConvertedImages[i].size.width) X \(reConvertedImages[i].size.height)")
             println("Size: \(reConvertedImages[i].size.width * reConvertedImages[i].size.height) ")
             
+            //threshold again?
+            reConvertedImages[i] = manipulator.thresholdPhoto(reConvertedImages[i])
+            
             // Padding
             reConvertedImages[i] = manipulator.insertPaddingIntoCharacter(reConvertedImages[i], height: 28, width: 28)
             
             flatTestRows.append(manipulator.altImageDump(reConvertedImages[i]))
         }
         
-        var dataCheck = manipulator.get2dArrayFromPixelDump(flatTestRows[1], height: 28, width: 28)
-        println("Printing DatqaCheck")
-        println(dataCheck)
+//        var dataCheck = manipulator.get2dArrayFromPixelDump(flatTestRows[1], height: 28, width: 28)
+//        println("Printing DatqaCheck")
+//        println(dataCheck)
         
         //imageView.image = reConvertedImages[0]
 //        for row in flatTestRows {
@@ -202,12 +207,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         println("Training Row data: \(trainingRowData.count)")
         var recognizedLables = rec.knn(4, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
         //DEBUG
+        
+        
+        self.charGuess.textColor = UIColor.redColor()
+        
+        // Calculate
         var labels = ""
         for label in recognizedLables {
             labels += "\(label) "
         }
+        var calc = Calculator()
+        var answer = calc.solve(recognizedLables)
+        labels += " = \(answer)"
         self.charGuess.text = "Guess: \(labels)"
-        self.charGuess.textColor = UIColor.redColor()
         
     }
     

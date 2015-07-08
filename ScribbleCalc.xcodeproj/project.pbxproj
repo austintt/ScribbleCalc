@@ -32,6 +32,9 @@
 		D9D2350B1B16650900FD521D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D2350A1B16650900FD521D /* CoreImage.framework */; };
 		D9D3F9AB1B2C9793006D5966 /* Recognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */; };
 		D9E41A8D1B446E240045026E /* trainingsampleWithPlus.csv in Resources */ = {isa = PBXBuildFile; fileRef = D9E41A8C1B446E240045026E /* trainingsampleWithPlus.csv */; };
+		D9F44F231B49F8C900142F95 /* trainingsampleWithPlusMinus.csv in Resources */ = {isa = PBXBuildFile; fileRef = D9F44F221B49F8C900142F95 /* trainingsampleWithPlusMinus.csv */; };
+		D9F44F251B49F99000142F95 /* trainingsampleMinus.csv in Resources */ = {isa = PBXBuildFile; fileRef = D9F44F241B49F99000142F95 /* trainingsampleMinus.csv */; };
+		D9F4E86F1B4D0BA400DF4FFC /* convertedTraining.csv in Resources */ = {isa = PBXBuildFile; fileRef = D9F4E86E1B4D0BA400DF4FFC /* convertedTraining.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,9 @@
 		D9D2350A1B16650900FD521D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D9D3F9AA1B2C9793006D5966 /* Recognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recognizer.swift; sourceTree = "<group>"; };
 		D9E41A8C1B446E240045026E /* trainingsampleWithPlus.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trainingsampleWithPlus.csv; sourceTree = "<group>"; };
+		D9F44F221B49F8C900142F95 /* trainingsampleWithPlusMinus.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trainingsampleWithPlusMinus.csv; sourceTree = "<group>"; };
+		D9F44F241B49F99000142F95 /* trainingsampleMinus.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trainingsampleMinus.csv; sourceTree = "<group>"; };
+		D9F4E86E1B4D0BA400DF4FFC /* convertedTraining.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = convertedTraining.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				D9315D761B3930D700106A66 /* white.png */,
+				D9F44F221B49F8C900142F95 /* trainingsampleWithPlusMinus.csv */,
+				D9F4E86E1B4D0BA400DF4FFC /* convertedTraining.csv */,
+				D9F44F241B49F99000142F95 /* trainingsampleMinus.csv */,
 				D9E41A8C1B446E240045026E /* trainingsampleWithPlus.csv */,
 				D91C9E0E1B0E36D600752433 /* trainingsample.csv */,
 				D99A580E1B3B51F5002E2594 /* scribbleIcon.png */,
@@ -319,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9315D771B3930D700106A66 /* white.png in Resources */,
+				D9F44F231B49F8C900142F95 /* trainingsampleWithPlusMinus.csv in Resources */,
 				D94A63441AF16711004DBF65 /* Main.storyboard in Resources */,
 				D99A580F1B3B51F5002E2594 /* scribbleIcon.png in Resources */,
 				D95AFB7C1B3A186F009962CF /* testM.csv in Resources */,
@@ -326,7 +336,9 @@
 				D91C9E0F1B0E36D600752433 /* trainingsample.csv in Resources */,
 				D95AFB7E1B3A18F4009962CF /* test.csv in Resources */,
 				D94A63461AF16711004DBF65 /* Images.xcassets in Resources */,
+				D9F4E86F1B4D0BA400DF4FFC /* convertedTraining.csv in Resources */,
 				D9E41A8D1B446E240045026E /* trainingsampleWithPlus.csv in Resources */,
+				D9F44F251B49F99000142F95 /* trainingsampleMinus.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
