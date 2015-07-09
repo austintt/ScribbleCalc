@@ -128,6 +128,7 @@ class Recognizer {
         
 //        for testRow in testRows {
         for (var i = testRows.count - 1; i >= 0; i--) {
+            
             // Get NN Lables
             var nnLables = findNearestNeighborLables(k, trainingRows: trainingRows, trainingRowLables: trainingRowLables, testRow: testRows[i])
             // Get mode

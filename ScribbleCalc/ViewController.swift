@@ -16,6 +16,7 @@ var hasLoadedTrainingData = false
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var charGuess: UILabel!
     @IBOutlet weak var charactersFoundLabel: UILabel!
     @IBOutlet weak var trainingDataLabel: UILabel!
@@ -99,6 +100,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        
+        // Get start time
+        let start = NSDate()
         
         // Process Image
         self.testDataLabel.text = "Processing image..."
@@ -202,24 +206,59 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         println("Attempting knn on \(flatTestRows.count)")
         
-//        // Knn
-        var rec = Recognizer()
-        println("Training Row data: \(trainingRowData.count)")
-        var recognizedLables = rec.knn(4, trainingRows: trainingRowData, trainingRowLables: trainingRowLabels, testRows: flatTestRows)
-        //DEBUG
+        // GCD
+        var recognizedLables = [String]()
+        var finalThreadRows = [ThreadedRow]()
+        let knnQueue = dispatch_queue_create("com.scribble.calc", DISPATCH_QUEUE_CONCURRENT)
+        let group = dispatch_group_create()
+        var count = 0
         
-        
-        self.charGuess.textColor = UIColor.redColor()
-        
-        // Calculate
-        var labels = ""
-        for label in recognizedLables {
-            labels += "\(label) "
+        for row in flatTestRows {
+            var newThreadRow = ThreadedRow(id: count, row: row)
+            count++
+            dispatch_group_async(group, knnQueue) {
+            var rec = Recognizer()
+            println("Training Row data: \(self.trainingRowData.count)")
+            newThreadRow.label = rec.knn(4, trainingRows: self.trainingRowData, trainingRowLables: self.trainingRowLabels, testRows: newThreadRow.row)
+            finalThreadRows.append(newThreadRow)
+            }
         }
-        var calc = Calculator()
-        var answer = calc.solve(recognizedLables)
-        labels += " = \(answer)"
-        self.charGuess.text = "Guess: \(labels)"
+        dispatch_group_notify(group, knnQueue){
+            // Sort out labels into recognized labels
+            var labelDictionary = [Int:String]()
+            for (var i = 0; i < finalThreadRows.count; i++) {
+                labelDictionary[finalThreadRows[i].id] = finalThreadRows[i].label.first!
+            }
+            var sortedLabels = sorted(labelDictionary) { $0.0 > $1.0 }
+            for label in sortedLabels {
+                recognizedLables.append(label.1)
+            }
+            
+            println("GOT LABLES! \(recognizedLables.description)")
+            
+            // Knn
+            
+            //DEBUG
+            
+            
+            self.charGuess.textColor = UIColor.redColor()
+            
+            // Calculate
+            var labels = ""
+            for label in recognizedLables {
+                labels += "\(label) "
+            }
+            var calc = Calculator()
+            var answer = calc.solve(recognizedLables)
+            labels += " = \(answer)"
+            self.charGuess.text = "Guess: \(labels)"
+            
+            //Get end time
+            let end = NSDate()
+            let timeInterval: Double = end.timeIntervalSinceDate(start)
+            self.timeLabel.text = String(format: "Elapsed time: %.2f seconds", timeInterval)
+        }
+        
         
     }
     
