@@ -168,8 +168,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Dump
         for (var i = 0; i < reConvertedImages.count; i++) {
-            println("RECEIVED AT: \(reConvertedImages[i].size.width) X \(reConvertedImages[i].size.height)")
-            println("Size: \(reConvertedImages[i].size.width * reConvertedImages[i].size.height) ")
+//            println("RECEIVED AT: \(reConvertedImages[i].size.width) X \(reConvertedImages[i].size.height)")
+//            println("Size: \(reConvertedImages[i].size.width * reConvertedImages[i].size.height) ")
             
             //threshold again?
 //            reConvertedImages[i] = manipulator.thresholdPhoto(reConvertedImages[i])
@@ -181,8 +181,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         var dataCheck = manipulator.get2dArrayFromPixelDump(flatTestRows[2], height: 28, width: 28)
-        println("Printing DatqaCheck")
-        println(dataCheck)
+//        println("Printing DatqaCheck")
+//        println(dataCheck)
         
         //imageView.image = reConvertedImages[0]
 //        for row in flatTestRows {
@@ -218,7 +218,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             count++
             dispatch_group_async(group, knnQueue) {
             var rec = Recognizer()
-            println("Training Row data: \(self.trainingRowData.count)")
+//            println("Training Row data: \(self.trainingRowData.count)")
             newThreadRow.label = rec.knn(4, trainingRows: self.trainingRowData, trainingRowLables: self.trainingRowLabels, testRows: newThreadRow.row)
             finalThreadRows.append(newThreadRow)
             }
@@ -258,8 +258,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let timeInterval: Double = end.timeIntervalSinceDate(start)
             self.timeLabel.text = String(format: "Elapsed time: %.2f seconds", timeInterval)
         }
-        
-        
     }
     
     /*************************************************************

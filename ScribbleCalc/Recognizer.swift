@@ -41,16 +41,16 @@ class Recognizer {
             if (nearestNeighbors.count == 0 || distance < nearestNeighbors.last!.value) {
                 nearestNeighbors.append(key: trainingRowLables[i], value: distance)
                 if (nearestNeighbors.count > k) {
-                    println("PRE-SORTED")
-                    for n in nearestNeighbors {
-                        println(n)
-                    }
+//                    println("PRE-SORTED")
+//                    for n in nearestNeighbors {
+//                        println(n)
+//                    }
                     nearestNeighbors = sorted(nearestNeighbors) {a,b in return a.value <= b.value}
                     nearestNeighbors.removeAtIndex(nearestNeighbors.count - 1)
-                    println("SORTED")
-                    for n in nearestNeighbors {
-                        println(n)
-                    }
+//                    println("SORTED")
+//                    for n in nearestNeighbors {
+//                        println(n)
+//                    }
                 }
             }
             
